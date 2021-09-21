@@ -1,0 +1,46 @@
+modules
+================
+- Registrations
+- Students
+- Departments
+- Courses
+- Subjects
+- Schedules
+	- Block Section
+
+accounting
+===========
+- Account
+	- Assessment
+- Payments
+- Refunds
+
+
+dean
+===========
+- Curriculums
+	- Prerequisites
+	- Equivalency
+
+registrar
+===========
+- Credited
+
+encoder
+==========
+- Enrollments
+- OldEnrollments
+
+professor
+==========
+- Grades
+
+admin
+============
+- Config
+	- School Fees
+
+
+
+
+

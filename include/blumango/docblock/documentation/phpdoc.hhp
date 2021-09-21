@@ -1,0 +1,20 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=documentation.chm
+Contents file=contents.hhc
+Default topic=index.html
+Display compile progress=No
+Index file=Index.hhk
+Language=0x409 English (United States)
+
+
+[FILES]
+sample\elementindex_sample.html
+elementindex.html
+blank.html
+classtrees_sample.html
+sample\_sample_php.html
+errors.html
+
+[INFOTYPES]
+

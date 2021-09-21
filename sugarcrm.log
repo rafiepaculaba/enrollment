@@ -1,0 +1,149 @@
+01/08/08 05:38:33,982 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.relationships' doesn't exist
+01/08/08 05:41:49,239 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 05:46:45,857 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 05:51:06,781 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 05:53:17,705 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 05:54:21,892 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 05:58:05,627 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 05:58:16,718 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:03:41,087 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:14:51,164 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:15:08,578 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:15:20,436 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:21:06,360 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:25:47,895 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.users_feeds' doesn't exist
+01/08/08 06:28:12,766 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:28:18,916 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:28:37,128 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:43:12,065 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:47:51,314 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:48:00,669 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 06:48:10,389 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.tracker' doesn't exist
+01/08/08 09:30:10,000 [2440] FATAL SugarCRM - MySQL error 1062: Duplicate entry '1' for key 1
+01/08/08 09:36:09,557 [2440] FATAL SugarCRM - MySQL error 1062: Duplicate entry '1' for key 1
+01/08/08 09:37:50,785 [2440] FATAL SugarCRM - MySQL error 1062: Duplicate entry '1' for key 1
+01/08/08 09:46:35,410 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.emails_contacts' doesn't exist
+01/08/08 09:47:52,296 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.emails_contacts' doesn't exist
+01/08/08 09:48:12,255 [2440] FATAL SugarCRM - MySQL error 1146: Table 'sandbox.emails_contacts' doesn't exist
+01/09/08 01:52:52,845 [2716] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/09/08 01:52:52,846 [2716] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+01/09/08 01:53:16,772 [2716] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/09/08 01:53:16,772 [2716] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+01/09/08 01:53:22,927 [2716] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/09/08 01:53:22,927 [2716] FATAL SugarCRM - FAILED LOGIN:attempts[3] - admin
+01/11/08 02:36:02,111 [2720] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/11/08 02:36:02,112 [2720] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+01/11/08 02:36:06,773 [2720] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/11/08 02:36:06,773 [2720] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+01/11/08 03:00:28,537 [2720] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/11/08 03:00:28,537 [2720] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+01/15/08 02:36:38,202 [2596] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/15/08 02:36:38,203 [2596] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+01/15/08 02:36:42,623 [2596] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/15/08 02:36:42,623 [2596] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+01/16/08 08:31:34,473 [2200] FATAL SugarCRM - MySQL error 1146: Table 'elementary.users' doesn't exist
+01/16/08 09:09:44,015 [2200] FATAL SugarCRM - MySQL error 1146: Table 'elementary.users' doesn't exist
+01/16/08 09:23:50,198 [2200] FATAL SugarCRM - MySQL error 1146: Table 'college.users' doesn't exist
+01/16/08 09:27:49,642 [2200] FATAL SugarCRM - MySQL error 1146: Table 'college.users' doesn't exist
+01/18/08 03:03:59,994 [2672] FATAL SugarCRM - SECURITY: User authentication for scad failed
+01/18/08 03:03:59,995 [2672] FATAL SugarCRM - FAILED LOGIN:attempts[1] - scad
+01/24/08 11:18:06,876 [2764] FATAL SugarCRM - SECURITY: User authentication for scad failed
+01/24/08 11:18:06,877 [2764] FATAL SugarCRM - FAILED LOGIN:attempts[1] - scad
+01/24/08 11:18:12,913 [2764] FATAL SugarCRM - SECURITY: User authentication for scad failed
+01/24/08 11:18:12,914 [2764] FATAL SugarCRM - FAILED LOGIN:attempts[2] - scad
+01/24/08 11:18:17,890 [2764] FATAL SugarCRM - SECURITY: User authentication for scad failed
+01/24/08 11:18:17,891 [2764] FATAL SugarCRM - FAILED LOGIN:attempts[3] - scad
+01/28/08 02:23:37,630 [2160] FATAL SugarCRM - SECURITY: User authentication for admin failed
+01/28/08 02:23:37,631 [2160] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/04/08 08:46:31,645 [2688] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/04/08 08:46:31,646 [2688] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/04/08 08:46:34,940 [2688] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/04/08 08:46:34,941 [2688] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+02/11/08 07:22:37,130 [2956] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/11/08 07:22:37,141 [2956] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/12/08 11:14:37,461 [2672] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/12/08 11:14:37,462 [2672] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/19/08 07:02:16,133 [2084] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/19/08 07:02:16,134 [2084] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/19/08 07:11:16,848 [2084] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/19/08 07:11:16,848 [2084] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/19/08 07:11:20,522 [2084] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/19/08 07:11:20,523 [2084] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+02/19/08 07:11:26,006 [2084] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/19/08 07:11:26,006 [2084] FATAL SugarCRM - FAILED LOGIN:attempts[3] - admin
+02/21/08 10:43:39,080 [2240] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/21/08 10:43:39,089 [2240] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/22/08 02:20:41,385 [2244] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+02/22/08 07:46:19,383 [2200] FATAL SugarCRM - SECURITY: User authentication for bernard failed
+02/22/08 07:46:19,383 [2200] FATAL SugarCRM - FAILED LOGIN:attempts[1] - bernard
+02/22/08 08:34:56,942 [2200] FATAL SugarCRM - FAILED LOGIN:attempts[1] - 
+02/22/08 08:35:41,030 [2200] FATAL SugarCRM - FAILED LOGIN:attempts[2] - 
+02/22/08 08:38:55,823 [2200] FATAL SugarCRM - FAILED LOGIN:attempts[1] - 
+02/22/08 12:30:58,854 [2200] FATAL SugarCRM - FAILED LOGIN:attempts[1] - 
+02/28/08 05:55:08,044 [2220] FATAL SugarCRM - SECURITY: User authentication for admin failed
+02/28/08 05:55:08,044 [2220] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+03/04/08 09:04:43,670 [3196] FATAL SugarCRM - SECURITY: User authentication for encoder failed
+03/04/08 09:04:43,689 [3196] FATAL SugarCRM - FAILED LOGIN:attempts[1] - encoder
+03/11/08 10:07:39,349 [2948] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/11/08 10:07:39,349 [2948] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+03/11/08 10:08:06,533 [2948] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/11/08 10:08:06,533 [2948] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+03/11/08 10:08:14,767 [2948] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/11/08 10:08:14,768 [2948] FATAL SugarCRM - FAILED LOGIN:attempts[3] - admin
+03/17/08 08:48:30,454 [1076] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/17/08 08:48:30,455 [1076] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+03/25/08 01:24:13,277 [2700] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/25/08 01:24:13,278 [2700] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+03/25/08 01:24:22,315 [2700] FATAL SugarCRM - SECURITY: User authentication for admin failed
+03/25/08 01:24:22,315 [2700] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+04/04/08 07:55:32,624 [2196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+04/04/08 07:55:32,625 [2196] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+04/04/08 07:55:40,725 [2196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+04/04/08 07:55:40,725 [2196] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+04/04/08 07:55:48,878 [2196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+04/04/08 07:55:48,879 [2196] FATAL SugarCRM - FAILED LOGIN:attempts[3] - admin
+04/04/08 07:56:48,111 [2196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+04/04/08 07:56:48,112 [2196] FATAL SugarCRM - FAILED LOGIN:attempts[4] - admin
+04/04/08 07:56:58,879 [2196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+04/04/08 07:56:58,879 [2196] FATAL SugarCRM - FAILED LOGIN:attempts[5] - admin
+05/14/08 07:09:51,720 [4864] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/14/08 07:09:51,736 [4864] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+05/18/08 13:30:14,947 [5072] FATAL SugarCRM - SECURITY: User authentication for scad failed
+05/18/08 13:30:15,012 [5072] FATAL SugarCRM - FAILED LOGIN:attempts[1] - scad
+05/18/08 14:50:27,409 [5072] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/18/08 14:50:27,410 [5072] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+05/18/08 15:24:11,650 [5072] FATAL SugarCRM - FAILED LOGIN:attempts[1] - nes
+05/19/08 03:18:02,568 [5436] FATAL SugarCRM - SECURITY: User authentication for dacs failed
+05/19/08 03:18:02,589 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[1] - dacs
+05/21/08 02:44:20,389 [5436] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/21/08 02:44:20,412 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+05/21/08 02:50:35,017 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+05/21/08 02:51:25,648 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[2] - 
+05/21/08 03:33:40,588 [5436] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/21/08 03:33:40,599 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[2] - admin
+05/21/08 03:33:50,230 [5436] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/21/08 03:33:50,230 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[3] - admin
+05/21/08 03:33:59,314 [5436] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/21/08 03:33:59,315 [5436] FATAL SugarCRM - FAILED LOGIN:attempts[4] - admin
+05/27/08 16:09:59,429 [4320] FATAL SugarCRM - SECURITY: User authentication for admin failed
+05/27/08 16:09:59,430 [4320] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+07/30/08 10:18:51,394 [1940] FATAL SugarCRM - SECURITY: User authentication for admin failed
+07/30/08 10:18:51,419 [1940] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+08/10/08 08:54:45,437 [4728] FATAL SugarCRM - SECURITY: User authentication for admin failed
+08/10/08 08:54:45,460 [4728] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+09/12/08 03:40:54,196 [4572] FATAL SugarCRM - SECURITY: User authentication for admin failed
+09/12/08 03:40:54,213 [4572] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+09/26/08 08:18:05,746 [2528] FATAL SugarCRM - SECURITY: User authentication for admin failed
+09/26/08 08:18:05,763 [2528] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+10/03/08 09:04:56,044 [3196] FATAL SugarCRM - SECURITY: User authentication for cashier failed
+10/03/08 09:04:56,097 [3196] FATAL SugarCRM - FAILED LOGIN:attempts[1] - cashier
+10/03/08 09:06:04,538 [3196] FATAL SugarCRM - SECURITY: User authentication for admin failed
+10/03/08 09:06:04,540 [3196] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin
+10/07/08 18:58:33,599 [4668] FATAL SugarCRM - SECURITY: User authentication for cash failed
+10/07/08 18:58:33,620 [4668] FATAL SugarCRM - FAILED LOGIN:attempts[1] - cash
+10/08/08 16:27:54,204 [5672] FATAL SugarCRM - SECURITY: User authentication for cashier failed
+10/08/08 16:27:54,218 [5672] FATAL SugarCRM - FAILED LOGIN:attempts[1] - cashier
+10/08/08 16:28:03,231 [5672] FATAL SugarCRM - SECURITY: User authentication for cashier1 failed
+10/08/08 16:28:03,232 [5672] FATAL SugarCRM - FAILED LOGIN:attempts[2] - cashier1
+10/09/08 19:34:19,555 [1484] FATAL SugarCRM - SECURITY: User authentication for admin failed
+10/09/08 19:34:19,580 [1484] FATAL SugarCRM - FAILED LOGIN:attempts[1] - admin

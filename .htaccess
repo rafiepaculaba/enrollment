@@ -1,0 +1,14 @@
+# BEGIN SUGARCRM RESTRICTIONS
+RedirectMatch /quickenroll/sugarcrm.log.* http://localhost/quickenroll/log_file_restricted.html
+RedirectMatch /quickenroll/emailman.log http://localhost/quickenroll/log_file_restricted.html
+RedirectMatch /quickenroll/not_imported_(.*).txt http://localhost/quickenroll/log_file_restricted.html
+RedirectMatch /quickenroll/XTemplate/(.*)/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/data/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/examples/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/include/(.*)/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/log4php/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/log4php/(.*)/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/metadata/(.*)/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/soap/(.*).php http://localhost/quickenroll/index.php
+RedirectMatch /quickenroll/emailmandelivery.php http://localhost/quickenroll/index.php
+# END SUGARCRM RESTRICTIONS

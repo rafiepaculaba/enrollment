@@ -1,0 +1,12 @@
+installation steps
+intro : welcome.php
+step 1: license.php
+step 2: checkSystem.php
+step 3: dbConfig.php
+step 4: siteConfig.php
+step 5: localization.php
+step 6: confirmSettings.php
+step 7: performSetup.php
+step 8: download_patches.php
+step 9: download_modules.php
+step 10: register.php

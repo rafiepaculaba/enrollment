@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="phpDocumentor version 1.3.0RC3">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="sample">
+		</OBJECT>
+		<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Files">
+		</OBJECT>
+		<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="sample Alphabetical Index">
+		<param name="Local" value="sample\elementindex_sample.html">
+		</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="sample Class Trees">
+		<param name="Local" value="classtrees_sample.html">
+		</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="sample.php">
+		<param name="Local" value="sample\_sample_php.html">
+		</OBJECT>
+		
+</UL>
+</UL>
+</UL><UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Index">
+		</OBJECT>
+		<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Files">
+		</OBJECT>
+		<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Alphabetical Index Of All Elements">
+		<param name="Local" value="elementindex.html">
+		</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Start page">
+		<param name="Local" value="blank.html">
+		</OBJECT>
+		
+</UL>
+</UL>
+</UL>
+</BODY></HTML>

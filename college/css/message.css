@@ -1,0 +1,36 @@
+
+/* - - NOTIFICATION AND STATUS BOXES - - */
+.notificationbox { 
+background: url(../images/msg_check.gif) 5px center no-repeat;  
+border: 1px #9E9E9E solid; 
+margin-bottom:10px; 
+}
+
+.confirmbox { 
+background: url(../images/msg_info.gif) 5px center no-repeat;
+border: 1px #9E9E9E solid; 
+margin-bottom:10px; 
+}  
+
+.errorbox, .commonmsgbox, .notificationbox, .confirmbox { 
+position: relative; 
+background-color: #eef3f8 !important; 
+padding: 10px 10px 10px 42px; 
+}
+
+.errorbox { 
+background: url(../images/msg_error.gif) 5px center no-repeat;  
+border: 1px #FF5C5C solid; 
+margin-bottom:10px; 
+}
+
+.errorbox .boxcontent, .commonmsgbox .boxcontent, .notificationbox .boxcontent, .confirmbox .boxcontent { 
+padding: 5px 0 5px 0; 
+font-size:12px; 
+}
+
+.printDiv {
+width: 624px;
+height:  768px;
+}
+  

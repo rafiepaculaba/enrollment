@@ -1,0 +1,65 @@
+<?php
+if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Public License Version
+ * 1.1.3 ("License"); You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.sugarcrm.com/SPL
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.  See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *    (i) the "Powered by SugarCRM" logo and
+ *    (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * The Original Code is: SugarCRM Open Source
+ * The Initial Developer of the Original Code is SugarCRM, Inc.
+ * Portions created by SugarCRM are Copyright (C) 2004-2006 SugarCRM, Inc.;
+ * All Rights Reserved.
+ * Contributor(s): ______________________________________.
+ ********************************************************************************/
+/*********************************************************************************
+
+ * Description:	Defines the English language pack for the base application.
+ * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
+ * All Rights Reserved.
+ * Contributor(s): ______________________________________..
+ ********************************************************************************/
+
+$mod_strings = array (
+	'LBL_MODULE_NAME'					=> 'Class Roster',
+	'LBL_MODULE_TITLE'     				=> 'Class Roster: Home',
+	'LBL_MODULE_TITLE_COL'				=> 'Class Roster: College',
+	'LBL_MODULE_TITLE_HS'				=> 'Class Roster: High School',
+	'LBL_MODULE_TITLE_ELEM'				=> 'Class Roster: Elementary',
+	'LBL_MODULE_TITLE_PRESCHOOL'		=> 'Class Roster: Preschool',
+
+	'LBL_MODULE_TITLE_ES_COL'				=> 'Enrollment Status: College',
+	'LBL_MODULE_TITLE_ES_HS'				=> 'Enrollment Status: High School',
+	'LBL_MODULE_TITLE_ES_ELEM'				=> 'Enrollment Status: Elementary',
+	'LBL_MODULE_TITLE_ES_PRESCHOOL'			=> 'Enrollment Status: Preschool',
+
+	'LBL_MODULE_TITLE_RR_COL'				=> 'Receivable Report: College',
+	'LBL_MODULE_TITLE_RR_HS'				=> 'Receivable Report: High School',
+	'LBL_MODULE_TITLE_RR_PRESCHOOL'			=> 'Receivable Report: Preschool',
+
+	'LBL_MODULE_TITLE_TL_COL'				=> 'Instructor\'s Load: College',
+	'LBL_MODULE_TITLE_TL_HS'				=> 'Teacher\'s Load: High School',
+	'LBL_MODULE_TITLE_TL_ELEM'				=> 'Teacher\'s Load: Elementary',
+	'LBL_MODULE_TITLE_TL_PRESCHOOL'			=> 'Teacher\'s Load: Preschool',
+
+	'LBL_MODULE_TITLE_CR_COL'				=> 'Collection Report: College',
+	'LBL_MODULE_TITLE_CR_HS'				=> 'Collection Report: High School',
+	'LBL_MODULE_TITLE_CR_ELEM'				=> 'Collection Report: Elementary',
+	'LBL_MODULE_TITLE_CR_PRESCHOOL'			=> 'Collection Report: Preschool',
+
+	'LBL_MODULE_TITLE_EL_COL'				=> 'Enrollment List: College',
+	'LBL_MODULE_TITLE_PL_COL'				=> 'Promotionary List: College',
+	
+	
+); // END STRINGS DEFS
+
+?>

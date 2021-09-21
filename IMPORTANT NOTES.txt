@@ -1,0 +1,875 @@
+******************************************************
+***               College Default Configurations                                 ***
+******************************************************
+
+assessment calculation suggested by shiela... wrong calculation....hehe
+ttl - 4000
+after term 2 change the
+ttl - 8000
+
+installment = 2000
+terms = 4
+
+
+formula: prev_due + installment
+
+
+term	due	payment		due_bal		balance		
+1	1000	500		500		3500
+2	1500	1000		500		2500(6500)
+3	2500	2500		0		4000
+
+
+
+
+enrollment locking options		- lock during enrollment
+=========================
+Courses
+- no delete
+
+Subjects
+- no delete
+- no edit
+
+Curriculums
+- no delete
+- no edit
+
+Schedules
+- no edit sched
+- no delete sched
+- no edit block
+- no delete block
+
+School Fees
+- no edit
+- no delete
+
+Student
+- no delete
+- no edit
+
+Enrollment
+- no withdrawals of prev schyear
+- no validating of prev schyear
+- no editing of prev schyear
+
+Grades
+- no approval
+- no delete
+- no edit
+
+Refunds
+- no edit of prev schyear
+- no delete of prev schyear
+
+Payments
+- no edit of prev schyear
+- no cancel of prev schyear
+
+transaction locking options		- lock during 
+=========================
+Enrollment
+- no edit
+- withdraw
+
+Refunds
+- no edit of prev schyear
+- no delete of prev schyear
+
+Payments
+- no edit of prev schyear
+- no cancel of prev schyear
+
+
+
+
+For School Fees in College
+Please create this school fees for every course
+- Tuition
+- Laboratory
+- Registration
+- Miscellaneous
+
+
+
+6:57 PM 3/31/2008
+changes
+- HS
+ - form137
+	- YrLevel			ALTER TABLE `form137` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `idno` ;
+
+ALTER TABLE `tor` ADD `oendID` BIGINT NOT NULL AFTER `endID` ;
+ALTER TABLE `tor` ADD `creID` BIGINT NOT NULL AFTER `oendID` ;
+ALTER TABLE `old_enrollments` ADD `encodedBy` VARCHAR( 32 ) NOT NULL AFTER `remarks` ;
+ALTER TABLE `old_enrollments` ADD `lastEdited` DATETIME NOT NULL AFTER `encodedBy` ;
+
+credited subj table
+ALTER TABLE `credited_subjs` ADD `schYear` varchar( 10 ) NOT NULL AFTER `idno` ,
+ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `schYear` ,
+ADD `semCode` CHAR( 1 ) NOT NULL AFTER `yrLevel` ,
+ADD `fgrade` FLOAT( 5, 1 ) NOT NULL AFTER `semCode` ;
+
+
+
+8:12 PM 4/4/2008
+todo
+- edit final grades in TOR/Form137
+- filter in subjects during enrollment
+- filter in subjects during block section
+
+
+
+3:25 PM 4/10/2008
+add yrLevel after semCode in TOR
+ALTER TABLE `tor` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `semCode` ;
+ALTER TABLE `tor` CHANGE `fgrade` `fgrade` VARCHAR( 5 ) NOT NULL DEFAULT '0';
+
+
+
+ for rev 0.13
+=================
+7:01 PM 4/14/2008 
+highschool and elementary
+ALTER TABLE `block_sections` ADD `maxCapacity` INT NOT NULL AFTER `yrLevel` ,
+ADD `noEnrolled` INT NOT NULL AFTER `maxCapacity` ;
+
+11:43 AM 4/15/2008
+college - for assessment display of year level transaction
+ALTER TABLE `assessments` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `semCode` ;
+
+
+hs/elem - for assessment display of year level transaction
+ALTER TABLE `assessments` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `schYear` ;
+
+
+
+
+for rel_0.14
+==================
+5:46 PM 4/16/2008
+
+college/HS/Elem - for amount of lab fee of the particular sched
+ALTER TABLE `schedules` ADD `labFee` FLOAT( 15, 2 ) NOT NULL AFTER `noEnrolled` ;
+
+
+enrollment - additional roles
+
+INSERT INTO `acl_roles` VALUES ('2fd8090b-c07c-3ee8-e10b-48080cdde01f', '2008-04-18 02:52:21', '2008-04-18 02:52:21', '1', '1', 'View Elem Lab Fee', 'View Elem Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('6d682da0-cfcf-1967-7f85-48080ce32212', '2008-04-18 02:52:12', '2008-04-18 02:52:12', '1', '1', 'View HS Lab Fee', 'View HS Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('1d31e247-1521-283d-7408-48080c063472', '2008-04-18 02:52:04', '2008-04-18 02:52:04', '1', '1', 'View Col Lab Fee', 'View Col Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('e14f9011-684e-51ad-703f-48080c14e2b4', '2008-04-18 02:51:53', '2008-04-18 02:51:53', '1', '1', 'List Elem Lab Fee', 'List Elem Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('125b840a-ca1c-a14b-d9ed-48080c7fdffb', '2008-04-18 02:51:39', '2008-04-18 02:51:39', '1', '1', 'List HS Lab Fee', 'List HS Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('ed800ecf-4901-cd6c-e614-48080c7f31eb', '2008-04-18 02:51:24', '2008-04-18 02:51:24', '1', '1', 'List Col Lab Fee', 'List Col Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('710d10b8-a9c0-c669-dcdd-48080c867b8f', '2008-04-18 02:51:13', '2008-04-18 02:51:13', '1', '1', 'Edit Elem Lab Fee', 'Edit Elem Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('6a6fc358-ffe3-e5c0-9bbb-48080cd639ab', '2008-04-18 02:50:58', '2008-04-18 02:50:58', '1', '1', 'Edit HS Lab Fee', 'Edit HS Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('e2d59922-a23c-a53a-a55a-48080c0cd283', '2008-04-18 02:50:37', '2008-04-18 02:50:37', '1', '1', 'Edit Col Lab Fee', 'Edit Col Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('2f888d97-271f-dc53-77ab-48080c72510d', '2008-04-18 02:50:27', '2008-04-18 02:50:27', '1', '1', 'Assign Elem Lab Fee', 'Assign Elem Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('8eea4042-c9e1-5a44-b9e1-48080cc876f6', '2008-04-18 02:50:15', '2008-04-18 02:50:15', '1', '1', 'Assign HS Lab Fee', 'Assign HS Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('e39cd26a-e77b-10a9-7737-48080c060a05', '2008-04-18 02:49:54', '2008-04-18 02:49:54', '1', '1', 'Assign Col Lab Fee', 'Assign Col Lab Fee', 0);
+
+INSERT INTO `acl_roles` VALUES ('e5d40709-2849-5142-e59b-47ff3d8f543d', '2008-04-11 10:30:39', '2008-04-11 10:30:39', '1', '1', 'View Elem Class Roster', 'View Elem Class Roster', 0);
+INSERT INTO `acl_roles` VALUES ('4a16db2b-2983-7cf6-765a-47ff3df204db', '2008-04-11 10:30:14', '2008-04-11 10:30:14', '1', '1', 'View HS Class Roster', 'View HS Class Roster', 0);
+INSERT INTO `acl_roles` VALUES ('ec70eee9-bda6-ebf0-4611-47ff3d0735fd', '2008-04-11 10:29:53', '2008-04-11 10:29:53', '1', '1', 'View Col Class Roster', 'View Col Class Roster', 0);
+
+10:49 AM 4/22/2008
+college db
+------------------
+ALTER TABLE `students` ADD `primary_edu` VARCHAR( 100 ) NULL AFTER `fatherName` ,
+ADD `interm_edu` VARCHAR( 100 ) NULL AFTER `primary_edu` ,
+ADD `hs_edu` VARCHAR( 100 ) NULL AFTER `interm_edu` ,
+ADD `primary_schYear` VARCHAR( 10 ) NULL AFTER `hs_edu` ,
+ADD `interm_shcYear` VARCHAR( 10 ) NULL AFTER `primary_schYear` ,
+ADD `hs_schYear` VARCHAR( 10 ) NULL AFTER `interm_shcYear` ;
+
+HS db
+------------
+ALTER TABLE `students` ADD `primary_edu` VARCHAR( 100 ) NULL AFTER `fatherName` ,
+ADD `primary_schYear` VARCHAR( 10 ) NULL AFTER `primary_edu` ;
+
+
+
+
+for release 0.15
+======================
+11:05 AM 4/23/2008
+col/hs/elem
+ALTER TABLE `registration_payments` ADD `ORno` VARCHAR( 10 ) NOT NULL AFTER `idno` ;
+ALTER TABLE `payments` ADD `ORno` VARCHAR( 10 ) NOT NULL AFTER `idno` ;
+
+college
+ALTER TABLE `school_fees` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `courseID` ;
+
+
+col/hs/elem
+=================
+ALTER TABLE `accounts` DROP `tuitionFee` ,
+DROP `labFee` ,
+DROP `regFee` ,
+DROP `miscFee` ,
+DROP `addAdj` ,
+DROP `lessAdj` ;
+
+col/hs/elem
+=================
+CREATE TABLE `account_details` (
+`accDetailID` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`accID` BIGINT NOT NULL ,
+`feeType` VARCHAR( 15 ) NOT NULL ,
+`particular` VARCHAR( 100 ) NOT NULL ,
+`amount` FLOAT( 15, 2 ) NOT NULL ,
+`rstatus` TINYINT NOT NULL DEFAULT '1',
+INDEX ( `accID` )
+) ENGINE = innodb;
+
+
+col
+===========
+ALTER TABLE `credited_subjs` CHANGE `schYear` `schYear` CHAR( 10 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL 
+
+col/elem/hs
+===========
+ALTER TABLE `registration_payments` ADD `type` CHAR( 1 ) NOT NULL DEFAULT '1' COMMENT '1=Registration ; 2=Down Payment' AFTER `ORno` ;
+
+enrollment
+=============
+INSERT INTO `acl_roles` VALUES ('45b24f18-118d-684b-f053-4817f6f00ce3', '2008-04-30 04:31:55', '2008-04-30 04:31:55', '1', '1', 'Collection Report Elem', 'Collection Report Elementary', 0);
+INSERT INTO `acl_roles` VALUES ('8a95be68-c28a-a3af-36fb-4817f6d835ba', '2008-04-30 04:31:37', '2008-04-30 04:31:37', '1', '1', 'Collection Report HS', 'Collection Report High School', 0);
+INSERT INTO `acl_roles` VALUES ('7ae5bf10-976a-8cdb-7717-4817f6e6aada', '2008-04-30 04:31:20', '2008-04-30 04:31:20', '1', '1', 'Collection Report Col', 'Collection Report College', 0);
+INSERT INTO `acl_roles` VALUES ('59fd0086-9955-0543-f4ae-48199b9a5634', '2008-05-01 10:29:00', '2008-05-01 10:29:00', '1', '1', 'Print Elem Study Load', 'Print Elem Study Load', 0);
+INSERT INTO `acl_roles` VALUES ('82f70754-ed60-5989-39b2-48199b4299a5', '2008-05-01 10:28:42', '2008-05-01 10:28:42', '1', '1', 'Print HS Study Load', 'Print HS Study Load', 0);
+INSERT INTO `acl_roles` VALUES ('8a58600a-b9e3-22d2-ed9f-48199b8dc025', '2008-05-01 10:28:25', '2008-05-01 10:28:25', '1', '1', 'Print Col Study Load', 'Print Col Study Load', 0);
+
+
+col/hs/elem
+=================
+ALTER TABLE `subjects` ADD `subjDesc` TEXT NULL AFTER `descTitle` ;
+ALTER TABLE `accounts` ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `schYear` ;
+
+
+enrollment
+==========
+INSERT INTO `acl_roles` VALUES ('aacb9b69-e584-fe81-064c-48201740521f', '2008-05-06 08:30:27', '2008-05-06 08:30:27', '1', '1', 'Print Bulk Elem Assessment', 'Print Bulk Elem Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('4c37b393-4226-718f-c804-48201710fc06', '2008-05-06 08:30:10', '2008-05-06 08:30:10', '1', '1', 'Print Bulk HS Assessment', 'Print Bulk HS Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('6458a98b-66c0-f877-a6a9-482016e79d54', '2008-05-06 08:28:02', '2008-05-06 08:28:02', '1', '1', 'Print Bulk Col Assessment', 'Print Bulk Col Assessment', 0);
+
+col
+============
+ALTER TABLE `accounts` ADD `courseID` INT NOT NULL AFTER `semCode` ;
+ALTER TABLE `assessments` ADD `courseID` INT NOT NULL AFTER `semCode` ;
+
+
+enrollment
+==============
+INSERT INTO `acl_roles` VALUES ('8eac2a79-6408-262d-dd62-4821666790aa', '2008-05-07 08:22:02', '2008-05-07 08:22:02', '1', '1', 'View Elem Final Grade', 'View Elem Final Grade\r\n', 0);
+INSERT INTO `acl_roles` VALUES ('6dbcb74b-c955-1942-3022-48216666b7e1', '2008-05-07 08:21:47', '2008-05-07 08:21:47', '1', '1', 'View HS Final Grade', 'View HS Final Grade', 0);
+INSERT INTO `acl_roles` VALUES ('35213dca-a4b6-f99b-a135-482166fb1816', '2008-05-07 08:21:33', '2008-05-07 08:21:33', '1', '1', 'View Col Final Grade', 'View Col Final Grade', 0);
+
+
+
+
+
+for release 0.16
+=============================================================================
+col/hs/elem
+================
+ALTER TABLE `enrollment_table_logs` ADD `changeBy` VARCHAR( 36 ) NOT NULL ;
+
+
+col
+================
+ALTER TABLE `tor_grade_logs` ADD `changeBy` VARCHAR( 36 ) NOT NULL ;
+
+
+hs/elem
+================
+ALTER TABLE `form137_grade_logs` ADD `changeBy` VARCHAR( 36 ) NOT NULL ;
+
+
+col/hs/elem
+================
+
+CREATE TABLE `payment_table_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `docType` varchar(20) NOT NULL,
+  `recID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `operation` varchar(10) NOT NULL,
+  `fields` varchar(200) NOT NULL,
+  `user_id` varchar(36) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+for release 0.17
+=============================================================================
+hs/elem
+========
+ALTER TABLE `students` ADD `motherOccupation` VARCHAR( 25 ) NULL AFTER `guardian` ,
+ADD `fatherOccupation` VARCHAR( 25 ) NULL AFTER `motherOccupation` ,
+ADD `guardianOccupation` VARCHAR( 25 ) NULL AFTER `fatherOccupation` ,
+ADD `motherContact` VARCHAR( 25 ) NULL AFTER `guardianOccupation` ,
+ADD `fatherContact` VARCHAR( 25 ) NULL AFTER `motherContact` ,
+ADD `guardianContact` VARCHAR( 25 ) NULL AFTER `fatherContact` ;
+
+INSERT INTO `configurations` ( `configID` , `title` , `definition` , `rstatus` )
+VALUES ( 7, 'Image Width', '150', 1 ) , ( 8, 'Image Height', '150', 1 ) ;
+
+
+CREATE TABLE `account_table_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `operation` varchar(10) NOT NULL,
+  `recID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `changes` varchar(200) NOT NULL,
+  `changeBy` varchar(36) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB ;
+
+
+col
+========
+ALTER TABLE `students` ADD `guardian` VARCHAR( 70 ) NULL AFTER `fatherName` ;
+ALTER TABLE `students` ADD `motherOccupation` VARCHAR( 25 ) NULL AFTER `guardian` ,
+ADD `fatherOccupation` VARCHAR( 25 ) NULL AFTER `motherOccupation` ,
+ADD `guardianOccupation` VARCHAR( 25 ) NULL AFTER `fatherOccupation` ,
+ADD `motherContact` VARCHAR( 25 ) NULL AFTER `guardianOccupation` ,
+ADD `fatherContact` VARCHAR( 25 ) NULL AFTER `motherContact` ,
+ADD `guardianContact` VARCHAR( 25 ) NULL AFTER `fatherContact` ;
+
+INSERT INTO `configurations` (`configID`, `title`, `definition`, `rstatus`) VALUES 
+(12, 'Image Width', '150', 1),
+(13, 'Image Height', '150', 1);
+
+CREATE TABLE `account_table_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `operation` varchar(10) NOT NULL,
+  `recID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `changes` varchar(200) NOT NULL,
+  `changeBy` varchar(36) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB ;
+
+
+
+
+col/hs/elem
+==========
+- 
+-- Table structure for table `enrollment_table_logs`
+-- 
+
+DROP TABLE IF EXISTS `enrollment_table_logs`;
+CREATE TABLE `enrollment_table_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `docType` varchar(10) NOT NULL,
+  `enID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `subjects` varchar(200) NOT NULL,
+  `changeBy` varchar(36) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
+
+
+
+enrollment
+===============
+INSERT INTO `acl_roles` VALUES ('dfd94822-dae5-2db5-d2e0-482ce94146fb', '2008-05-16 01:56:22', '2008-05-16 01:56:22', '1', '1', 'Teachers Load Elem', 'Teachers Load Elem', 0);
+INSERT INTO `acl_roles` VALUES ('92a6ffc0-7b3d-dec3-e1fd-482ce9809c33', '2008-05-16 01:56:16', '2008-05-16 01:56:16', '1', '1', 'Teachers Load HS', 'Teachers Load HS', 0);
+INSERT INTO `acl_roles` VALUES ('36d29da0-fc52-31b0-ec47-482ce915f948', '2008-05-16 01:56:10', '2008-05-16 01:56:10', '1', '1', 'Teachers Load Col', 'Teachers Load Col', 0);
+INSERT INTO `acl_roles` VALUES ('a9352fc2-fac5-6158-b243-482ce947998c', '2008-05-16 01:56:03', '2008-05-16 01:56:03', '1', '1', 'Generate Elem Enrollment Status', 'Generate Elem Enrollment Status', 0);
+INSERT INTO `acl_roles` VALUES ('adbc9985-ee00-69e1-3716-482ce94d213e', '2008-05-16 01:55:55', '2008-05-16 01:55:55', '1', '1', 'Generate HS Enrollment Status', 'Generate HS Enrollment Status', 0);
+INSERT INTO `acl_roles` VALUES ('9945b749-bdbe-8d81-2481-482ce9f09887', '2008-05-16 01:55:47', '2008-05-16 01:55:47', '1', '1', 'Generate Col Enrollment Status', 'Generate Col Enrollment Status', 0);
+
+INSERT INTO `acl_roles` VALUES ('e80fd44b-febe-ce75-658d-482d60709c2d', '2008-05-16 10:21:26', '2008-05-16 10:21:26', '1', '1', 'Elem Dashboard', 'Elem Dashboard', 0);
+INSERT INTO `acl_roles` VALUES ('cc43aa20-5932-891e-3b56-482d607a321a', '2008-05-16 10:21:08', '2008-05-16 10:21:08', '1', '1', 'HS Dashboard', 'HS Dashboard', 0);
+INSERT INTO `acl_roles` VALUES ('b61b245f-f289-7dda-e16e-482d60bb913b', '2008-05-16 10:20:51', '2008-05-16 10:20:51', '1', '1', 'Col Dashboard', 'Col Dashboard', 0);
+
+
+
+
+for rel_0.19
+================
+
+col/hs/elem
+==========
+ALTER TABLE `enrollments` ADD `studType` TINYINT NOT NULL DEFAULT '1' AFTER `lastEdited` ;
+
+
+col/hs/elem
+===========
+please create another config in col/hs/elem
+name		value
+Since Year	2005
+Image Width	150
+Image Height	150
+
+
+for rel 0.20
+================
+col/hs/elem
+ ALTER TABLE `subjects` CHANGE `subjCode` `subjCode` VARCHAR( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL  
+
+col
+ALTER TABLE `enrollment_details` ADD `mgrade` VARCHAR( 5 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `subjID` ;
+
+col
+ALTER TABLE `enrollment_details` ADD `pregrade` VARCHAR( 5 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `subjID` ;
+ALTER TABLE `enrollment_details` ADD `prefigrade` VARCHAR( 5 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AFTER `mgrade` ;
+
+HS
+ALTER TABLE `enrollment_details` ADD `firstgrade` FLOAT( 5, 1 ) NOT NULL AFTER `subjID` ;
+ALTER TABLE `enrollment_details` ADD `secondgrade` FLOAT( 5, 1 ) NOT NULL AFTER `firstgrade` ;
+ALTER TABLE `enrollment_details` ADD `thirdgrade` FLOAT( 5, 1 ) NOT NULL AFTER `secondgrade` ;
+ALTER TABLE `enrollment_details` ADD `fourthgrade` FLOAT( 5, 1 ) NOT NULL AFTER `thirdgrade` ;
+
+Elem
+ALTER TABLE `enrollment_details` ADD `firstgrade` FLOAT( 5, 1 ) NOT NULL AFTER `subjID` ;
+ALTER TABLE `enrollment_details` ADD `secondgrade` FLOAT( 5, 1 ) NOT NULL AFTER `firstgrade` ;
+ALTER TABLE `enrollment_details` ADD `thirdgrade` FLOAT( 5, 1 ) NOT NULL AFTER `secondgrade` ;
+ALTER TABLE `enrollment_details` ADD `fourthgrade` FLOAT( 5, 1 ) NOT NULL AFTER `thirdgrade` ;
+
+col
+INSERT INTO `configurations` VALUES (14, 'School Region', 'VII', 1);
+
+HS
+ALTER TABLE `form137` ADD `firstgrade` FLOAT( 5, 1 ) NOT NULL AFTER `subjID` ;
+ALTER TABLE `form137` ADD `secondgrade` FLOAT( 5, 1 ) NOT NULL AFTER `firstgrade` ;
+ALTER TABLE `form137` ADD `thirdgrade` FLOAT( 5, 1 ) NOT NULL AFTER `secondgrade` ;
+ALTER TABLE `form137` ADD `fourthgrade` FLOAT( 5, 1 ) NOT NULL AFTER `thirdgrade` ;
+
+
+--enrollment
+
+INSERT INTO `acl_roles` VALUES ('3a8aaf00-e36c-4f22-f481-4868e0d3e0ed', '2008-06-30 13:31:49', '2008-06-30 13:31:49', '1', '1', 'Create Preschool Student', 'Create Preschool Student', 0);
+INSERT INTO `acl_roles` VALUES ('ad3ba17c-3225-a2e8-7fb0-4868e0214c54', '2008-06-30 13:32:56', '2008-06-30 13:32:56', '1', '1', 'Create Preschool Assessment', 'Create Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('551eecda-8ea0-7580-464d-4868e0c4a82c', '2008-06-30 13:33:12', '2008-06-30 13:33:12', '1', '1', 'List Preschool Configuration', 'List Preschool Configuration', 0);
+INSERT INTO `acl_roles` VALUES ('66379e0b-09f5-cc3d-9387-4868e07ddd2c', '2008-06-30 13:33:26', '2008-06-30 13:33:26', '1', '1', 'Delete Preschool Grade', 'Delete Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('d9e3ff78-58f8-3c1d-1eeb-4868e03accea', '2008-06-30 13:33:35', '2008-06-30 13:33:35', '1', '1', 'View Preschool Payment', 'View Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('be817d7c-9ae7-bacc-a112-4868e013d96e', '2008-06-30 13:33:44', '2008-06-30 13:33:44', '1', '1', 'Delete Preschool Refund', 'Delete Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('af17d820-aac0-271c-81da-4868e0fa3d07', '2008-06-30 13:33:53', '2008-06-30 13:33:53', '1', '1', 'View Preschool Account', 'View Preschool Account', 0);
+INSERT INTO `acl_roles` VALUES ('ceef8ca8-de14-f10d-a5f2-4868e0700aee', '2008-06-30 13:34:03', '2008-06-30 13:34:03', '1', '1', 'List Preschool Assessment', 'List Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('e6a86a5a-cf53-42ed-d2a4-4868e009918c', '2008-06-30 13:34:13', '2008-06-30 13:34:13', '1', '1', 'List Preschool Subject', 'List Preschool Subject', 0);
+INSERT INTO `acl_roles` VALUES ('df990e29-1a11-922e-d6da-4868e0f4d47e', '2008-06-30 13:34:23', '2008-06-30 13:34:23', '1', '1', 'Create Preschool Registration', 'Create Preschool Registration', 0);
+INSERT INTO `acl_roles` VALUES ('8b00c6b3-1564-052b-75b0-4868e05156b0', '2008-06-30 13:34:32', '2008-06-30 13:34:32', '1', '1', 'List Preschool Account', 'List Preschool Account', 0);
+INSERT INTO `acl_roles` VALUES ('1a6b1812-0bfc-cb0a-aa91-4868e0caffb5', '2008-06-30 13:34:43', '2008-06-30 13:34:43', '1', '1', 'View Preschool Assessment', 'View Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('49b762e7-3702-a257-7955-4868e0387aa2', '2008-06-30 13:34:51', '2008-06-30 13:34:51', '1', '1', 'Create Preschool Account', 'Create Preschool Account', 0);
+INSERT INTO `acl_roles` VALUES ('2e90b14a-3b0a-f573-2d7d-4868e1abd2c2', '2008-06-30 13:35:00', '2008-06-30 13:35:00', '1', '1', 'Edit Preschool Enrollment', 'Edit Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('c232532c-1751-c357-16de-4868e100cc33', '2008-06-30 13:35:12', '2008-06-30 13:35:12', '1', '1', 'Edit Preschool Schedule', 'Edit Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('efd4787a-5d54-12eb-c3ef-4868e1ed168d', '2008-06-30 13:35:21', '2008-06-30 13:35:21', '1', '1', 'View Preschool Schedule', 'View Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('4ae7d700-7b12-418a-6266-4868e15c8312', '2008-06-30 13:35:33', '2008-06-30 13:35:33', '1', '1', 'Edit Preschool Grade', 'Edit Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('dcdb6879-d4ca-31a1-5ca6-4868e12354c4', '2008-06-30 13:35:41', '2008-06-30 13:35:41', '1', '1', 'Delete Preschool Schedule', 'Delete Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('a7e80b67-263e-6408-7a54-4868e13bc8b5', '2008-06-30 13:35:56', '2008-06-30 13:35:56', '1', '1', 'List Preschool Block Section', 'List Preschool Block Section', 0);
+INSERT INTO `acl_roles` VALUES ('d82d9df2-d351-e3dc-346c-4868e1776d0e', '2008-06-30 13:36:05', '2008-06-30 13:36:05', '1', '1', 'Edit Preschool Refund', 'Edit Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('ba16453c-873b-fbd1-dd11-4868e176d4df', '2008-06-30 13:36:16', '2008-06-30 13:36:16', '1', '1', 'List Preschool Registration', 'List Preschool Registration', 0);
+INSERT INTO `acl_roles` VALUES ('eadb64ea-9126-ab89-c2e5-4868e1785e4b', '2008-06-30 13:36:25', '2008-06-30 13:36:25', '1', '1', 'Edit Preschool Block Section', 'Edit Preschool Block Section', 0);
+INSERT INTO `acl_roles` VALUES ('fd940a15-bfcd-48e3-7563-4868e14d5381', '2008-06-30 13:36:35', '2008-06-30 13:36:35', '1', '1', 'Delete Preschool Configuration', 'Delete Preschool Configuration', 0);
+INSERT INTO `acl_roles` VALUES ('b0f14b99-7106-3bc6-7728-4868e1de7ec3', '2008-06-30 13:36:44', '2008-06-30 13:36:44', '1', '1', 'Create Preschool Schedule', 'Create Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('ea640a7b-83a5-32b8-799d-4868e18531a5', '2008-06-30 13:36:54', '2008-06-30 13:36:54', '1', '1', 'View Preschool Configuration', 'View Preschool Configuration', 0);
+INSERT INTO `acl_roles` VALUES ('3181452e-01af-69c2-8842-4868e1b141b9', '2008-06-30 13:37:20', '2008-06-30 13:37:20', '1', '1', 'Edit Preschool Assessment', 'Edit Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('586bdedd-3cd2-18d8-7d71-4868e1b0e1af', '2008-06-30 13:37:30', '2008-06-30 13:37:30', '1', '1', 'List Preschool Enrollment', 'List Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('58af0cc0-ec0f-210b-51f9-4868e16f290a', '2008-06-30 13:37:39', '2008-06-30 13:37:39', '1', '1', 'Delete Preschool Student', 'Delete Preschool Student', 0);
+INSERT INTO `acl_roles` VALUES ('a4164d27-a0ee-4792-3b76-4868e16ce34c', '2008-06-30 13:37:49', '2008-06-30 13:37:49', '1', '1', 'Create Preschool Configuration', 'Create Preschool Configuration', 0);
+INSERT INTO `acl_roles` VALUES ('a45b9d62-da8c-ee06-12c0-4868e1a323b8', '2008-06-30 13:37:58', '2008-06-30 13:37:58', '1', '1', 'List Preschool Schedule', 'List Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('6315aed1-acc8-cb45-0278-4868e174581f', '2008-06-30 13:38:13', '2008-06-30 13:38:13', '1', '1', 'Delete Preschool Account', 'Delete Preschool Account', 0);
+INSERT INTO `acl_roles` VALUES ('ae246a49-ec43-3480-528d-4868e18e400e', '2008-06-30 13:38:22', '2008-06-30 13:38:22', '1', '1', 'List Preschool Refund', 'List Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('b9d6ca8d-479b-91c6-969c-4868e1b05b82', '2008-06-30 13:38:31', '2008-06-30 13:38:31', '1', '1', 'Edit Preschool Registration', 'Edit Preschool Registration', 0);
+INSERT INTO `acl_roles` VALUES ('1098fa30-01ae-658b-b8fc-4868e136e61f', '2008-06-30 13:38:40', '2008-06-30 13:38:40', '1', '1', 'View Preschool Student', 'View Preschool Student', 0);
+INSERT INTO `acl_roles` VALUES ('5c1f3f21-8bb8-b1fd-6bf5-4868e1301293', '2008-06-30 13:38:48', '2008-06-30 13:38:48', '1', '1', 'Delete Preschool Subject', 'Delete Preschool Subject', 0);
+INSERT INTO `acl_roles` VALUES ('1c730f78-b784-c5ea-d446-4868e1bb3bf8', '2008-06-30 13:38:57', '2008-06-30 13:38:57', '1', '1', 'View Preschool Refund', 'View Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('f2893a53-bc44-76b8-7959-4868e16b1fe6', '2008-06-30 13:39:06', '2008-06-30 13:39:06', '1', '1', 'Create Preschool Enrollment', 'Create Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('ba000c24-ffc2-bcd5-d45e-4868e2680f11', '2008-06-30 13:39:16', '2008-06-30 13:39:16', '1', '1', 'List Preschool School Fee', 'List Preschool School Fee', 0);
+INSERT INTO `acl_roles` VALUES ('448d14c5-b198-e563-175e-4868e2547ba2', '2008-06-30 13:39:25', '2008-06-30 13:39:25', '1', '1', 'Delete Preschool Enrollment', 'Delete Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('438b1373-af6a-62de-9689-4868e2e847e6', '2008-06-30 13:39:34', '2008-06-30 13:39:34', '1', '1', 'Edit Preschool Account', 'Edit Preschool Account', 0);
+INSERT INTO `acl_roles` VALUES ('a348f269-fb6b-0452-a98b-4868e2eee000', '2008-06-30 13:39:45', '2008-06-30 13:39:45', '1', '1', 'Delete Preschool Assessment', 'Delete Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('8481d9f5-091f-ffa4-7545-4868e2bbece8', '2008-06-30 13:39:53', '2008-06-30 13:39:53', '1', '1', 'List Preschool Payment', 'List Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('b4d9f9f1-d037-8c23-e269-4868e21ceed1', '2008-06-30 13:40:01', '2008-06-30 13:40:01', '1', '1', 'Create Preschool Block Section', 'Create Preschool Block Section', 0);
+INSERT INTO `acl_roles` VALUES ('8c9eaeb2-a080-cd1e-f466-4868e2689703', '2008-06-30 13:40:10', '2008-06-30 13:40:10', '1', '1', 'Create Preschool Payment', 'Create Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('930b4645-60ed-0720-fde4-4868e2ac066b', '2008-06-30 13:40:18', '2008-06-30 13:40:18', '1', '1', 'Delete Preschool Registration', 'Delete Preschool Registration', 0);
+INSERT INTO `acl_roles` VALUES ('e94d172a-dbe6-8c13-5664-4868e2a2e881', '2008-06-30 13:40:26', '2008-06-30 13:40:26', '1', '1', 'Edit Preschool Subject', 'Edit Preschool Subject', 0);
+INSERT INTO `acl_roles` VALUES ('f03984a2-71ea-7ab8-82ea-4868e25ac646', '2008-06-30 13:40:35', '2008-06-30 13:40:35', '1', '1', 'Create Preschool Refund', 'Create Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('88b2eaca-d7b7-863d-b365-4868e2568392', '2008-06-30 13:40:44', '2008-06-30 13:40:44', '1', '1', 'View Preschool Enrollment', 'View Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('9a6bf420-5264-f63d-c54d-4868e2196904', '2008-06-30 13:40:52', '2008-06-30 13:40:52', '1', '1', 'Create Preschool Grade', 'Create Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('96d1f5a5-d5b0-6a99-f0d4-4868e20af312', '2008-06-30 13:41:00', '2008-06-30 13:41:00', '1', '1', 'List Preschool Grade', 'List Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('8e2591a1-6efb-ae6f-1e07-4868e22dba8e', '2008-06-30 13:41:08', '2008-06-30 13:41:08', '1', '1', 'Edit Preschool Student', 'Edit Preschool Student', 0);
+INSERT INTO `acl_roles` VALUES ('5c3f0da9-a8fe-21f5-be24-4868e2806e48', '2008-06-30 13:41:18', '2008-06-30 13:41:18', '1', '1', 'Edit Preschool Payment', 'Edit Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('e2e59466-f71b-757a-356f-4868e2871962', '2008-06-30 13:41:26', '2008-06-30 13:41:26', '1', '1', 'View Preschool Block Section', 'View Preschool Block Section', 0);
+INSERT INTO `acl_roles` VALUES ('505b2862-1fcf-aeeb-dde7-4868e285d59f', '2008-06-30 13:41:35', '2008-06-30 13:41:35', '1', '1', 'Delete Preschool Payment', 'Delete Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('4f107504-ad2a-e18a-8f1a-4868e299db18', '2008-06-30 13:41:44', '2008-06-30 13:41:44', '1', '1', 'View Preschool Grade', 'View Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('ec9a427c-c661-2c5f-488a-4868e28eb9e9', '2008-06-30 13:41:52', '2008-06-30 13:41:52', '1', '1', 'View Preschool Subject', 'View Preschool Subject', 0);
+INSERT INTO `acl_roles` VALUES ('73f7a3cf-2c1a-99a6-a76f-4868e2531eef', '2008-06-30 13:42:01', '2008-06-30 13:42:01', '1', '1', 'Edit Preschool Configuration', 'Edit Preschool Configuration', 0);
+INSERT INTO `acl_roles` VALUES ('7b289911-3474-6525-4418-4868e24b2243', '2008-06-30 13:42:09', '2008-06-30 13:42:09', '1', '1', 'List Preschool Student', 'List Preschool Student', 0);
+INSERT INTO `acl_roles` VALUES ('c60394a1-130f-9e9a-02e6-4868e2c867b1', '2008-06-30 13:42:17', '2008-06-30 13:42:17', '1', '1', 'View Preschool Registration', 'View Preschool Registration', 0);
+INSERT INTO `acl_roles` VALUES ('7762d73e-9076-fdad-ef19-4868e2d6d2ff', '2008-06-30 13:42:28', '2008-06-30 13:42:28', '1', '1', 'Create Preschool Subject', 'Create Preschool Subject', 0);
+INSERT INTO `acl_roles` VALUES ('f3ccba05-e21d-80bc-990c-4868e2d148c3', '2008-06-30 13:42:37', '2008-06-30 13:42:37', '1', '1', 'Create Preschool School Fee', 'Create Preschool School Fee', 0);
+INSERT INTO `acl_roles` VALUES ('99a100b4-3117-1f19-bb35-4868e2f72c19', '2008-06-30 13:42:45', '2008-06-30 13:42:45', '1', '1', 'Validate Preschool Enrollment', 'Validate Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('596c5886-23f3-1eb1-33c1-4868e210b38f', '2008-06-30 13:42:57', '2008-06-30 13:42:57', '1', '1', 'Withdraw Preschool Enrollment', 'Withdraw Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('f27e7a02-485a-a277-f797-4868e29b0b30', '2008-06-30 13:43:08', '2008-06-30 13:43:08', '1', '1', 'Late Withdrawal Preschool Enrollment', 'Late Withdrawal Preschool Enrollment', 0);
+INSERT INTO `acl_roles` VALUES ('e912fc5a-bc7a-c8a2-5ba3-4868e2a2739c', '2008-06-30 13:43:18', '2008-06-30 13:43:18', '1', '1', 'Cancel Preschool Payment', 'Cancel Preschool Payment', 0);
+INSERT INTO `acl_roles` VALUES ('e884d23c-c2b6-af3b-61e9-4868e31eb640', '2008-06-30 13:43:28', '2008-06-30 13:43:28', '1', '1', 'Cancel Preschool Refund', 'Cancel Preschool Refund', 0);
+INSERT INTO `acl_roles` VALUES ('61308a60-3b66-2d75-9bd3-4868e3618a32', '2008-06-30 13:43:39', '2008-06-30 13:43:39', '1', '1', 'Approve Preschool Grade', 'Approve Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('a34c6862-f491-504e-676f-4868e3eb90c8', '2008-06-30 13:43:52', '2008-06-30 13:43:52', '1', '1', 'Post Preschool Grade', 'Post Preschool Grade', 0);
+INSERT INTO `acl_roles` VALUES ('df7ebb53-b3ae-3384-b89f-4868e32a4436', '2008-06-30 13:44:01', '2008-06-30 13:44:01', '1', '1', 'View Preschool Form137', 'View Preschool Form137', 0);
+INSERT INTO `acl_roles` VALUES ('debc5168-f229-6358-201f-4868e39cba8d', '2008-06-30 13:44:12', '2008-06-30 13:44:12', '1', '1', 'View Preschool Class Roster', 'View Preschool Class Roster', 0);
+INSERT INTO `acl_roles` VALUES ('92a0be4f-2286-9b68-df8c-4868e3c5e69c', '2008-06-30 13:44:25', '2008-06-30 13:44:25', '1', '1', 'Cancel Preschool Registration Payment', 'Cancel Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('38cd27fe-bebe-424d-9c96-4868e324ed16', '2008-06-30 13:44:34', '2008-06-30 13:44:34', '1', '1', 'Delete Preschool Registration Payment', 'Delete Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('deeccce3-5686-25db-86ab-4868e30f812c', '2008-06-30 13:44:42', '2008-06-30 13:44:42', '1', '1', 'Edit Preschool Registration Payment', 'Edit Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('b66b0063-bd71-88f6-1424-4868e3659568', '2008-06-30 13:44:51', '2008-06-30 13:44:51', '1', '1', 'List Preschool Registration Payment', 'List Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('acdb0359-9d59-faa1-0015-4868e3ccba49', '2008-06-30 13:44:59', '2008-06-30 13:44:59', '1', '1', 'Create Preschool Registration Payment', 'Create Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('234b77c4-4171-7ec8-fc7c-4868e3b4edba', '2008-06-30 13:45:09', '2008-06-30 13:45:09', '1', '1', 'View Preschool Registration Payment', 'View Preschool Registration Payment', 0);
+INSERT INTO `acl_roles` VALUES ('1d1a28c1-ae79-dd85-4c49-4868e33c2c2d', '2008-06-30 13:45:17', '2008-06-30 13:45:17', '1', '1', 'View Preschool Lab Fee', 'View Preschool Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('5040b4a3-3aff-c6ff-448c-4868e3e96bca', '2008-06-30 13:45:26', '2008-06-30 13:45:26', '1', '1', 'List Preschool Lab Fee', 'List Preschool Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('d6558876-e08a-f7f9-cc76-4868e3d61e13', '2008-06-30 13:45:34', '2008-06-30 13:45:34', '1', '1', 'Edit Preschool Lab Fee', 'Edit Preschool Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('e6b2085f-fd01-c349-35c7-4868e357e540', '2008-06-30 13:45:43', '2008-06-30 13:45:43', '1', '1', 'Assign Preschool Lab Fee', 'Assign Preschool Lab Fee', 0);
+INSERT INTO `acl_roles` VALUES ('2dbb9d05-ebef-495e-b26b-4868e36e0cd7', '2008-06-30 13:45:51', '2008-06-30 13:45:51', '1', '1', 'Collection Report Preschool', 'Collection Report Preschool', 0);
+INSERT INTO `acl_roles` VALUES ('4f228fe7-0e63-d768-1fcc-4868e3424a92', '2008-06-30 13:46:09', '2008-06-30 13:46:09', '1', '1', 'Print Preschool Study Load', 'Print Preschool Study Load', 0);
+INSERT INTO `acl_roles` VALUES ('71329b4a-7932-d50a-aa68-4868e3f2714b', '2008-06-30 13:46:18', '2008-06-30 13:46:18', '1', '1', 'Print Bulk Preschool Assessment', 'Print Bulk Preschool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('82a0c10f-792d-43a0-ac3d-4868e31ee767', '2008-06-30 13:46:29', '2008-06-30 13:46:29', '1', '1', 'View Preschool Final Grade', 'View Preschool Final Grade', 0);
+INSERT INTO `acl_roles` VALUES ('930bffbb-0e26-f052-ce11-4868e3f4e566', '2008-06-30 13:46:39', '2008-06-30 13:46:39', '1', '1', 'View Receivable Preschool', 'View Receivable Preschool', 0);
+INSERT INTO `acl_roles` VALUES ('9090db09-f935-a4b0-6640-4868e3c2db5b', '2008-06-30 13:46:56', '2008-06-30 13:46:56', '1', '1', 'Teachers Load Preschool', 'Teachers Load Preschool', 0);
+INSERT INTO `acl_roles` VALUES ('15fc086c-62da-eb8f-8957-4868e358ed29', '2008-06-30 13:47:05', '2008-06-30 13:47:05', '1', '1', 'Generate Preschool Enrollment Status', 'Generate Preschool Enrollment Status', 0);
+INSERT INTO `acl_roles` VALUES ('7c4ef85e-be99-2ae8-f60a-4868e3e98520', '2008-06-30 13:47:14', '2008-06-30 13:47:14', '1', '1', 'Generate PreSchool Assessment', 'Generate PreSchool Assessment', 0);
+INSERT INTO `acl_roles` VALUES ('b576dd47-4d44-cb3a-6e31-4868e3156131', '2008-06-30 13:47:24', '2008-06-30 13:47:24', '1', '1', 'Preschool Dashboard', 'Preschool Dashboard', 0);
+INSERT INTO `acl_roles` VALUES ('7c0f67d5-ad3d-46f7-93f3-4868e306160b', '2008-06-30 13:47:36', '2008-06-30 13:47:36', '1', '1', 'Cashier Report Preschool', 'Cashier Report Preschool', 0);
+INSERT INTO `acl_roles` VALUES ('70711599-7b62-afc8-d63d-4868e4145c3f', '2008-06-30 13:47:46', '2008-06-30 13:47:46', '1', '1', 'Copy Preschool Schedule', 'Copy Preschool Schedule', 0);
+INSERT INTO `acl_roles` VALUES ('78386821-815e-04de-7b7a-4868e411e7e1', '2008-06-30 13:47:55', '2008-06-30 13:47:55', '1', '1', 'View Preschool Grade Sheet', 'View Preschool Grade Sheet', 0);
+INSERT INTO `acl_roles` VALUES ('b4597a4c-a5f2-e07b-ff36-4868e4184343', '2008-06-30 13:48:04', '2008-06-30 13:48:04', '1', '1', 'View Preschool Student Grade', 'View Preschool Student Grade', 0);
+INSERT INTO `acl_roles` VALUES ('141ee279-403e-6e6b-b4f5-4868e41a9298', '2008-06-30 13:48:13', '2008-06-30 13:48:13', '1', '1', 'Delete Preschool Block Section', 'Delete Preschool Block Section', 0);
+INSERT INTO `acl_roles` VALUES ('ce930523-11b9-2fe5-e8dc-4868e45236d8', '2008-06-30 13:48:23', '2008-06-30 13:48:23', '1', '1', 'Delete Preschool School Fee', 'Delete Preschool School Fee', 0);
+INSERT INTO `acl_roles` VALUES ('49a9e234-22bf-4e7c-8b31-4868e43e3824', '2008-06-30 13:48:32', '2008-06-30 13:48:32', '1', '1', 'Edit Preschool School Fee', 'Edit Preschool School Fee', 0);
+INSERT INTO `acl_roles` VALUES ('6c993aad-ca63-8a2b-ea12-4868e49d3ff8', '2008-06-30 13:48:41', '2008-06-30 13:48:41', '1', '1', 'View Preschool School Fee', 'View Preschool School Fee', 0);
+
+INSERT INTO `user_group_roles` VALUES (687, 12, '61308a60-3b66-2d75-9bd3-4868e3618a32', 1);",
+INSERT INTO `user_group_roles` VALUES (688, 12, 'b4d9f9f1-d037-8c23-e269-4868e21ceed1', 1);",
+INSERT INTO `user_group_roles` VALUES (689, 12, 'b0f14b99-7106-3bc6-7728-4868e1de7ec3', 1);",
+INSERT INTO `user_group_roles` VALUES (690, 12, '66379e0b-09f5-cc3d-9387-4868e07ddd2c', 1);",
+INSERT INTO `user_group_roles` VALUES (691, 12, 'dcdb6879-d4ca-31a1-5ca6-4868e12354c4', 1);",
+INSERT INTO `user_group_roles` VALUES (692, 12, 'eadb64ea-9126-ab89-c2e5-4868e1785e4b', 1);",
+INSERT INTO `user_group_roles` VALUES (693, 12, 'c232532c-1751-c357-16de-4868e100cc33', 1);",
+INSERT INTO `user_group_roles` VALUES (694, 12, '15fc086c-62da-eb8f-8957-4868e358ed29', 1);",
+INSERT INTO `user_group_roles` VALUES (695, 12, 'a7e80b67-263e-6408-7a54-4868e13bc8b5', 1);",
+INSERT INTO `user_group_roles` VALUES (696, 12, '586bdedd-3cd2-18d8-7d71-4868e1b0e1af', 1);",
+INSERT INTO `user_group_roles` VALUES (697, 12, '96d1f5a5-d5b0-6a99-f0d4-4868e20af312', 1);",
+INSERT INTO `user_group_roles` VALUES (698, 12, 'a45b9d62-da8c-ee06-12c0-4868e1a323b8', 1);",
+INSERT INTO `user_group_roles` VALUES (699, 12, '7b289911-3474-6525-4418-4868e24b2243', 1);",
+INSERT INTO `user_group_roles` VALUES (700, 12, 'e6a86a5a-cf53-42ed-d2a4-4868e009918c', 1);",
+INSERT INTO `user_group_roles` VALUES (701, 12, 'b576dd47-4d44-cb3a-6e31-4868e3156131', 1);",
+INSERT INTO `user_group_roles` VALUES (702, 12, '4f228fe7-0e63-d768-1fcc-4868e3424a92', 1);",
+INSERT INTO `user_group_roles` VALUES (703, 12, '9090db09-f935-a4b0-6640-4868e3c2db5b', 1);",
+INSERT INTO `user_group_roles` VALUES (704, 12, 'e2e59466-f71b-757a-356f-4868e2871962', 1);",
+INSERT INTO `user_group_roles` VALUES (705, 12, 'debc5168-f229-6358-201f-4868e39cba8d', 1);",
+INSERT INTO `user_group_roles` VALUES (706, 12, '88b2eaca-d7b7-863d-b365-4868e2568392', 1);",
+INSERT INTO `user_group_roles` VALUES (707, 12, '82a0c10f-792d-43a0-ac3d-4868e31ee767', 1);",
+INSERT INTO `user_group_roles` VALUES (708, 12, 'df7ebb53-b3ae-3384-b89f-4868e32a4436', 1);",
+INSERT INTO `user_group_roles` VALUES (709, 12, '4f107504-ad2a-e18a-8f1a-4868e299db18', 1);",
+INSERT INTO `user_group_roles` VALUES (710, 12, 'efd4787a-5d54-12eb-c3ef-4868e1ed168d', 1);",
+INSERT INTO `user_group_roles` VALUES (711, 12, '1098fa30-01ae-658b-b8fc-4868e136e61f', 1);",
+INSERT INTO `user_group_roles` VALUES (712, 12, 'ec9a427c-c661-2c5f-488a-4868e28eb9e9', 1);",
+INSERT INTO `user_group_roles` VALUES (713, 11, '9a6bf420-5264-f63d-c54d-4868e2196904', 1);",
+INSERT INTO `user_group_roles` VALUES (714, 11, '66379e0b-09f5-cc3d-9387-4868e07ddd2c', 1);",
+INSERT INTO `user_group_roles` VALUES (715, 11, '4ae7d700-7b12-418a-6266-4868e15c8312', 1);",
+INSERT INTO `user_group_roles` VALUES (716, 11, 'a7e80b67-263e-6408-7a54-4868e13bc8b5', 1);",
+INSERT INTO `user_group_roles` VALUES (717, 11, '96d1f5a5-d5b0-6a99-f0d4-4868e20af312', 1);",
+INSERT INTO `user_group_roles` VALUES (718, 11, 'a45b9d62-da8c-ee06-12c0-4868e1a323b8', 1);",
+INSERT INTO `user_group_roles` VALUES (719, 11, '7b289911-3474-6525-4418-4868e24b2243', 1);",
+INSERT INTO `user_group_roles` VALUES (720, 11, 'e6a86a5a-cf53-42ed-d2a4-4868e009918c', 1);",
+INSERT INTO `user_group_roles` VALUES (721, 11, '9090db09-f935-a4b0-6640-4868e3c2db5b', 1);",
+INSERT INTO `user_group_roles` VALUES (722, 11, 'e2e59466-f71b-757a-356f-4868e2871962', 1);",
+INSERT INTO `user_group_roles` VALUES (723, 11, 'debc5168-f229-6358-201f-4868e39cba8d', 1);",
+INSERT INTO `user_group_roles` VALUES (724, 11, '4f107504-ad2a-e18a-8f1a-4868e299db18', 1);",
+INSERT INTO `user_group_roles` VALUES (725, 11, 'efd4787a-5d54-12eb-c3ef-4868e1ed168d', 1);",
+INSERT INTO `user_group_roles` VALUES (726, 11, '1098fa30-01ae-658b-b8fc-4868e136e61f', 1);",
+INSERT INTO `user_group_roles` VALUES (727, 11, 'ec9a427c-c661-2c5f-488a-4868e28eb9e9', 1);
+INSERT INTO `user_group_roles` VALUES (728, 4, 'f2893a53-bc44-76b8-7959-4868e16b1fe6', 1);
+INSERT INTO `user_group_roles` VALUES (729, 4, '3a8aaf00-e36c-4f22-f481-4868e0d3e0ed', 1);
+INSERT INTO `user_group_roles` VALUES (730, 4, '448d14c5-b198-e563-175e-4868e2547ba2', 1);
+INSERT INTO `user_group_roles` VALUES (731, 4, '930b4645-60ed-0720-fde4-4868e2ac066b', 1);
+INSERT INTO `user_group_roles` VALUES (732, 4, '58af0cc0-ec0f-210b-51f9-4868e16f290a', 1);
+INSERT INTO `user_group_roles` VALUES (733, 4, '2e90b14a-3b0a-f573-2d7d-4868e1abd2c2', 1);
+INSERT INTO `user_group_roles` VALUES (734, 4, 'b9d6ca8d-479b-91c6-969c-4868e1b05b82', 1);
+INSERT INTO `user_group_roles` VALUES (735, 4, 'e94d172a-dbe6-8c13-5664-4868e2a2e881', 1);
+INSERT INTO `user_group_roles` VALUES (736, 4, 'a7e80b67-263e-6408-7a54-4868e13bc8b5', 1);
+INSERT INTO `user_group_roles` VALUES (737, 4, '586bdedd-3cd2-18d8-7d71-4868e1b0e1af', 1);
+INSERT INTO `user_group_roles` VALUES (738, 4, 'ba16453c-873b-fbd1-dd11-4868e176d4df', 1);
+INSERT INTO `user_group_roles` VALUES (739, 4, 'a45b9d62-da8c-ee06-12c0-4868e1a323b8', 1);
+INSERT INTO `user_group_roles` VALUES (740, 4, '7b289911-3474-6525-4418-4868e24b2243', 1);
+INSERT INTO `user_group_roles` VALUES (741, 4, 'e6a86a5a-cf53-42ed-d2a4-4868e009918c', 1);
+INSERT INTO `user_group_roles` VALUES (742, 4, '4f228fe7-0e63-d768-1fcc-4868e3424a92', 1);
+INSERT INTO `user_group_roles` VALUES (743, 4, 'e2e59466-f71b-757a-356f-4868e2871962', 1);
+INSERT INTO `user_group_roles` VALUES (744, 4, '88b2eaca-d7b7-863d-b365-4868e2568392', 1);
+INSERT INTO `user_group_roles` VALUES (745, 4, 'c60394a1-130f-9e9a-02e6-4868e2c867b1', 1);
+INSERT INTO `user_group_roles` VALUES (746, 4, 'efd4787a-5d54-12eb-c3ef-4868e1ed168d', 1);
+INSERT INTO `user_group_roles` VALUES (747, 4, 'b4597a4c-a5f2-e07b-ff36-4868e4184343', 1);
+INSERT INTO `user_group_roles` VALUES (748, 4, 'ec9a427c-c661-2c5f-488a-4868e28eb9e9', 1);
+INSERT INTO `user_group_roles` VALUES (749, 4, '596c5886-23f3-1eb1-33c1-4868e210b38f', 1);
+INSERT INTO `user_group_roles` VALUES (750, 3, 'e6b2085f-fd01-c349-35c7-4868e357e540', 1);
+INSERT INTO `user_group_roles` VALUES (751, 3, 'e912fc5a-bc7a-c8a2-5ba3-4868e2a2739c', 1);
+INSERT INTO `user_group_roles` VALUES (752, 3, '92a0be4f-2286-9b68-df8c-4868e3c5e69c', 1);
+INSERT INTO `user_group_roles` VALUES (753, 3, '7c0f67d5-ad3d-46f7-93f3-4868e306160b', 1);
+INSERT INTO `user_group_roles` VALUES (754, 3, '2dbb9d05-ebef-495e-b26b-4868e36e0cd7', 1);
+INSERT INTO `user_group_roles` VALUES (755, 3, '49b762e7-3702-a257-7955-4868e0387aa2', 1);
+INSERT INTO `user_group_roles` VALUES (756, 3, 'ad3ba17c-3225-a2e8-7fb0-4868e0214c54', 1);
+INSERT INTO `user_group_roles` VALUES (757, 3, '8c9eaeb2-a080-cd1e-f466-4868e2689703', 1);
+INSERT INTO `user_group_roles` VALUES (758, 3, 'f03984a2-71ea-7ab8-82ea-4868e25ac646', 1);
+INSERT INTO `user_group_roles` VALUES (759, 3, 'acdb0359-9d59-faa1-0015-4868e3ccba49', 1);
+INSERT INTO `user_group_roles` VALUES (760, 3, 'f3ccba05-e21d-80bc-990c-4868e2d148c3', 1);
+INSERT INTO `user_group_roles` VALUES (761, 3, '6315aed1-acc8-cb45-0278-4868e174581f', 1);
+INSERT INTO `user_group_roles` VALUES (762, 3, 'a348f269-fb6b-0452-a98b-4868e2eee000', 1);
+INSERT INTO `user_group_roles` VALUES (763, 3, '505b2862-1fcf-aeeb-dde7-4868e285d59f', 1);
+INSERT INTO `user_group_roles` VALUES (764, 3, 'be817d7c-9ae7-bacc-a112-4868e013d96e', 1);
+INSERT INTO `user_group_roles` VALUES (765, 3, '38cd27fe-bebe-424d-9c96-4868e324ed16', 1);
+INSERT INTO `user_group_roles` VALUES (766, 3, '438b1373-af6a-62de-9689-4868e2e847e6', 1);
+INSERT INTO `user_group_roles` VALUES (767, 3, '3181452e-01af-69c2-8842-4868e1b141b9', 1);
+INSERT INTO `user_group_roles` VALUES (768, 3, '5c3f0da9-a8fe-21f5-be24-4868e2806e48', 1);
+INSERT INTO `user_group_roles` VALUES (769, 3, 'd82d9df2-d351-e3dc-346c-4868e1776d0e', 1);
+INSERT INTO `user_group_roles` VALUES (770, 3, 'deeccce3-5686-25db-86ab-4868e30f812c', 1);
+INSERT INTO `user_group_roles` VALUES (771, 3, '8b00c6b3-1564-052b-75b0-4868e05156b0', 1);
+INSERT INTO `user_group_roles` VALUES (772, 3, 'ceef8ca8-de14-f10d-a5f2-4868e0700aee', 1);
+INSERT INTO `user_group_roles` VALUES (773, 3, '586bdedd-3cd2-18d8-7d71-4868e1b0e1af', 1);
+INSERT INTO `user_group_roles` VALUES (774, 3, '5040b4a3-3aff-c6ff-448c-4868e3e96bca', 1);
+INSERT INTO `user_group_roles` VALUES (775, 3, '8481d9f5-091f-ffa4-7545-4868e2bbece8', 1);
+INSERT INTO `user_group_roles` VALUES (776, 3, 'ae246a49-ec43-3480-528d-4868e18e400e', 1);
+INSERT INTO `user_group_roles` VALUES (777, 3, 'b66b0063-bd71-88f6-1424-4868e3659568', 1);
+INSERT INTO `user_group_roles` VALUES (778, 3, 'ba000c24-ffc2-bcd5-d45e-4868e2680f11', 1);
+INSERT INTO `user_group_roles` VALUES (779, 3, '7b289911-3474-6525-4418-4868e24b2243', 1);
+INSERT INTO `user_group_roles` VALUES (780, 3, 'e6a86a5a-cf53-42ed-d2a4-4868e009918c', 1);
+INSERT INTO `user_group_roles` VALUES (781, 3, '71329b4a-7932-d50a-aa68-4868e3f2714b', 1);
+INSERT INTO `user_group_roles` VALUES (782, 3, '99a100b4-3117-1f19-bb35-4868e2f72c19', 1);
+INSERT INTO `user_group_roles` VALUES (783, 3, 'af17d820-aac0-271c-81da-4868e0fa3d07', 1);
+INSERT INTO `user_group_roles` VALUES (784, 3, '1a6b1812-0bfc-cb0a-aa91-4868e0caffb5', 1);
+INSERT INTO `user_group_roles` VALUES (785, 3, '88b2eaca-d7b7-863d-b365-4868e2568392', 1);
+INSERT INTO `user_group_roles` VALUES (786, 3, '1d1a28c1-ae79-dd85-4c49-4868e33c2c2d', 1);
+INSERT INTO `user_group_roles` VALUES (787, 3, 'd9e3ff78-58f8-3c1d-1eeb-4868e03accea', 1);
+INSERT INTO `user_group_roles` VALUES (788, 3, '1c730f78-b784-c5ea-d446-4868e1bb3bf8', 1);
+INSERT INTO `user_group_roles` VALUES (789, 3, '234b77c4-4171-7ec8-fc7c-4868e3b4edba', 1);
+INSERT INTO `user_group_roles` VALUES (790, 3, '1098fa30-01ae-658b-b8fc-4868e136e61f', 1);
+INSERT INTO `user_group_roles` VALUES (791, 3, 'ec9a427c-c661-2c5f-488a-4868e28eb9e9', 1);
+INSERT INTO `user_group_roles` VALUES (792, 3, '930bffbb-0e26-f052-ce11-4868e3f4e566', 1);
+INSERT INTO `user_group_roles` VALUES (793, 2, 'df990e29-1a11-922e-d6da-4868e0f4d47e', 1);
+INSERT INTO `user_group_roles` VALUES (794, 2, '3a8aaf00-e36c-4f22-f481-4868e0d3e0ed', 1);
+INSERT INTO `user_group_roles` VALUES (795, 2, '930b4645-60ed-0720-fde4-4868e2ac066b', 1);
+INSERT INTO `user_group_roles` VALUES (796, 2, '2e90b14a-3b0a-f573-2d7d-4868e1abd2c2', 1);
+INSERT INTO `user_group_roles` VALUES (797, 2, 'b9d6ca8d-479b-91c6-969c-4868e1b05b82', 1);
+INSERT INTO `user_group_roles` VALUES (798, 2, '8e2591a1-6efb-ae6f-1e07-4868e22dba8e', 1);
+INSERT INTO `user_group_roles` VALUES (799, 2, 'e94d172a-dbe6-8c13-5664-4868e2a2e881', 1);
+INSERT INTO `user_group_roles` VALUES (800, 2, '15fc086c-62da-eb8f-8957-4868e358ed29', 1);
+INSERT INTO `user_group_roles` VALUES (801, 2, 'f27e7a02-485a-a277-f797-4868e29b0b30', 1);
+INSERT INTO `user_group_roles` VALUES (802, 2, '586bdedd-3cd2-18d8-7d71-4868e1b0e1af', 1);
+INSERT INTO `user_group_roles` VALUES (803, 2, '96d1f5a5-d5b0-6a99-f0d4-4868e20af312', 1);
+INSERT INTO `user_group_roles` VALUES (804, 2, 'ba16453c-873b-fbd1-dd11-4868e176d4df', 1);
+INSERT INTO `user_group_roles` VALUES (805, 2, '7b289911-3474-6525-4418-4868e24b2243', 1);
+INSERT INTO `user_group_roles` VALUES (806, 2, 'e6a86a5a-cf53-42ed-d2a4-4868e009918c', 1);
+INSERT INTO `user_group_roles` VALUES (807, 2, 'a34c6862-f491-504e-676f-4868e3eb90c8', 1);
+INSERT INTO `user_group_roles` VALUES (808, 2, '9090db09-f935-a4b0-6640-4868e3c2db5b', 1);
+INSERT INTO `user_group_roles` VALUES (809, 2, '99a100b4-3117-1f19-bb35-4868e2f72c19', 1);
+INSERT INTO `user_group_roles` VALUES (810, 2, 'debc5168-f229-6358-201f-4868e39cba8d', 1);
+INSERT INTO `user_group_roles` VALUES (811, 2, '88b2eaca-d7b7-863d-b365-4868e2568392', 1);
+INSERT INTO `user_group_roles` VALUES (812, 2, '82a0c10f-792d-43a0-ac3d-4868e31ee767', 1);
+INSERT INTO `user_group_roles` VALUES (813, 2, 'df7ebb53-b3ae-3384-b89f-4868e32a4436', 1);
+INSERT INTO `user_group_roles` VALUES (814, 2, '4f107504-ad2a-e18a-8f1a-4868e299db18', 1);
+INSERT INTO `user_group_roles` VALUES (815, 2, 'c60394a1-130f-9e9a-02e6-4868e2c867b1', 1);
+INSERT INTO `user_group_roles` VALUES (816, 2, '1098fa30-01ae-658b-b8fc-4868e136e61f', 1);
+INSERT INTO `user_group_roles` VALUES (817, 2, 'ec9a427c-c661-2c5f-488a-4868e28eb9e9', 1);
+INSERT INTO `user_group_roles` VALUES (818, 2, '596c5886-23f3-1eb1-33c1-4868e210b38f', 1);
+
+
+
+//enrollment
+INSERT INTO `user_groups` VALUES (11, 'Preschool Teacher', 'Preschool Teacher', 1);
+INSERT INTO `user_groups` VALUES (12, 'Preschool Principal', 'Preschool Principal Group', 1);
+
+
+//preschool
+INSERT INTO `configurations` VALUES (1, 'School Name', 'Blumango Technologies Corp.', 1);
+INSERT INTO `configurations` VALUES (2, 'School Address', '1247 Leyson St, Talamban, Cebu City', 1);
+INSERT INTO `configurations` VALUES (3, 'Contact', 'Tel: 416-0031 Telefax: 346-7163', 1);
+INSERT INTO `configurations` VALUES (4, 'Passing Grade', '75', 1);
+INSERT INTO `configurations` VALUES (5, 'School Year', '2008-2009', 1);
+INSERT INTO `configurations` VALUES (6, 'Terms', '10', 1);
+INSERT INTO `configurations` VALUES (7, 'Image Width', '150', 1);
+INSERT INTO `configurations` VALUES (8, 'Image Height', '150', 1);
+INSERT INTO `configurations` VALUES (9, 'Since Year', '2005', 1);
+
+    
+    
+//preschool
+INSERT INTO `school_fees` VALUES (1, '2008-2009', 1, 'Tuition', 0, 1);
+INSERT INTO `school_fees` VALUES (2, '2008-2009', 1, 'Laboratory', 0, 1);
+INSERT INTO `school_fees` VALUES (3, '2008-2009', 1, 'Registration', 0, 1);
+INSERT INTO `school_fees` VALUES (4, '2008-2009', 1, 'Miscellaneous', 0, 1);
+INSERT INTO `school_fees` VALUES (5, '2008-2009', 2, 'Tuition', 0, 1);
+INSERT INTO `school_fees` VALUES (6, '2008-2009', 2, 'Laboratory', 0, 1);
+INSERT INTO `school_fees` VALUES (7, '2008-2009', 2, 'Registration', 0, 1);
+INSERT INTO `school_fees` VALUES (8, '2008-2009', 2, 'Miscellaneous', 0, 1);
+INSERT INTO `school_fees` VALUES (9, '2008-2009', 3, 'Tuition', 0, 1);
+INSERT INTO `school_fees` VALUES (10, '2008-2009', 3, 'Laboratory', 0, 1);
+INSERT INTO `school_fees` VALUES (11, '2008-2009', 3, 'Registration', 0, 1);
+INSERT INTO `school_fees` VALUES (12, '2008-2009', 3, 'Miscellaneous', 0, 1);
+INSERT INTO `school_fees` VALUES (13, '2008-2009', 4, 'Tuition', 0, 1);
+INSERT INTO `school_fees` VALUES (14, '2008-2009', 4, 'Laboratory', 0, 1);
+INSERT INTO `school_fees` VALUES (15, '2008-2009', 4, 'Registration', 0, 1);
+INSERT INTO `school_fees` VALUES (16, '2008-2009', 4, 'Miscellaneous', 0, 1);
+
+//HS, ELem, Preschool
+ALTER TABLE `form137` ADD `firstgrade` FLOAT( 5, 1 ) NOT NULL AFTER `subjID` ;
+ALTER TABLE `form137` ADD `secondgrade` FLOAT( 5, 1 ) NOT NULL AFTER `firstgrade` ;
+ALTER TABLE `form137` ADD `thirdgrade` FLOAT( 5, 1 ) NOT NULL AFTER `secondgrade` ;
+ALTER TABLE `form137` ADD `fourthgrade` FLOAT( 5, 1 ) NOT NULL AFTER `thirdgrade` ;
+
+//Col
+DROP TABLE `account_notes`  
+DROP TABLE `payments`  
+DROP TABLE `payment_types`  
+DROP TABLE `registrations`  
+DROP TABLE `registration_payments`  
+
+CREATE TABLE `chart_class` (
+  `cid` int(11) NOT NULL default '0',
+  `class_name` varchar(60) NOT NULL default '',
+  `balance_sheet` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`cid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `chart_master` (
+  `account_code` varchar(11) NOT NULL default '',
+  `account_name` varchar(60) NOT NULL default '',
+  `account_type` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`account_code`),
+  KEY `account_code` (`account_code`),
+  KEY `account_name` (`account_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `chart_types` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(60) NOT NULL default '',
+  `class_id` tinyint(1) NOT NULL default '0',
+  `parent` int(11) NOT NULL default '-1',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+
+CREATE TABLE `ordetails` (
+  `ordno` int(11) NOT NULL auto_increment,
+  `orno` char(10) NOT NULL,
+  `accNo` char(10) NOT NULL,
+  `amount` float(15,2) NOT NULL,
+  PRIMARY KEY  (`ordno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `orheader` (
+  `paymentID` int(11) NOT NULL auto_increment,
+  `orno` char(10) default NULL,
+  `idno` char(15) default NULL,
+  `accID` int(11) default NULL,
+  `schYear` char(10) default NULL,
+  `semCode` char(1) default NULL,
+  `term` char(1) default NULL,
+  `dateCreated` date default NULL,
+  `totalAmount` float(15,2) default NULL,
+  `cashier` varchar(36) default NULL,
+  `rstatus` tinyint(4) default '1',
+  PRIMARY KEY  (`paymentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `orseries` (
+  `id` int(11) NOT NULL auto_increment,
+  `firstORNO` int(11) default NULL,
+  `lastORNO` int(11) default NULL,
+  `currentORNO` int(11) default NULL,
+  `cancelledOR` int(11) default NULL,
+  `cashier` varchar(36) default NULL,
+  `rstatus` tinyint(4) default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+ALTER TABLE  `school_fees` ADD  `account_code` INT NOT NULL 
+
+INSERT INTO `user_groups` VALUES (13, 'Cashier', 'Cashier Group', 1);
+
+ALTER TABLE `misc` ADD `schYear` VARCHAR( 10 ) NOT NULL AFTER `miscID` ,
+ADD `yrLevel` CHAR( 1 ) NOT NULL AFTER `schYear` ;
+
+ALTER TABLE `orseries` ADD `fiscalYear` VARCHAR( 4 ) NOT NULL AFTER `id` ;
+
+
+
+INSERT INTO `acl_roles` (`id`, `date_entered`, `date_modified`, `modified_user_id`, `created_by`, `name`, `description`, `deleted`) VALUES
+('573dda50-08c3-c848-2ac5-48e665409075', '2008-10-03 18:34:17', '2008-10-03 18:34:17', '1', '1', 'Summary of Income Prep', 'Summary of Income Prep', 0),
+('759a0103-baa3-6545-7f88-48e66517ca5c', '2008-10-03 18:34:01', '2008-10-03 18:34:01', '1', '1', 'Summary of Income Elem', 'Summary of Income Elem', 0),
+('6598fb96-7e7e-3cb4-2b39-48e6652edfe2', '2008-10-03 18:33:49', '2008-10-03 18:33:49', '1', '1', 'Summary of Income HS', 'Summary of Income HS', 0),
+('19417881-1438-7662-a293-48e665ce9e38', '2008-10-03 18:33:31', '2008-10-03 18:33:31', '1', '1', 'Summary of Income Col', 'Summary of Income Col', 0);
+
+INSERT INTO `user_group_roles` VALUES (819, 13, '173a1040-903c-ee2f-b6d1-48d9d61ee9bc', 1);
+INSERT INTO `user_group_roles` VALUES (820, 13, '195fd5d5-b55c-c956-4415-48d9d62dd410', 1);
+INSERT INTO `user_group_roles` VALUES (821, 13, '569411c6-310b-1e1a-536c-47df4b109dda', 1);
+INSERT INTO `user_group_roles` VALUES (822, 13, '5df61a21-7cba-2c06-e8e5-47df3b86dfbf', 1);
+INSERT INTO `user_group_roles` VALUES (824, 13, '37a83af6-78d4-fbb2-a8f9-484352958a0a', 1);
+INSERT INTO `user_group_roles` VALUES (825, 13, '7a26210a-055e-20de-0bca-484352fb930f', 1);
+INSERT INTO `user_group_roles` VALUES (826, 13, '7c0f67d5-ad3d-46f7-93f3-4868e306160b', 1);
+INSERT INTO `user_group_roles` VALUES (827, 13, 'b61b245f-f289-7dda-e16e-482d60bb913b', 1);
+INSERT INTO `user_group_roles` VALUES (828, 13, '7ae5bf10-976a-8cdb-7717-4817f6e6aada', 1);
+INSERT INTO `user_group_roles` VALUES (829, 13, '45b24f18-118d-684b-f053-4817f6f00ce3', 1);
+INSERT INTO `user_group_roles` VALUES (830, 13, '8a95be68-c28a-a3af-36fb-4817f6d835ba', 1);
+INSERT INTO `user_group_roles` VALUES (831, 13, '2dbb9d05-ebef-495e-b26b-4868e36e0cd7', 1);
+INSERT INTO `user_group_roles` VALUES (832, 13, '3047f812-f6c4-a031-f8dd-48d9d2c0ab73', 1);
+INSERT INTO `user_group_roles` VALUES (833, 13, '47a7031f-22fa-fdf9-87cf-48d9d2985b52', 1);
+INSERT INTO `user_group_roles` VALUES (834, 13, '322073ad-f78f-1a3c-ea81-47b181f2fa5f', 1);
+INSERT INTO `user_group_roles` VALUES (835, 13, '357a7197-efb7-77d3-9948-47b181518b29', 1);
+INSERT INTO `user_group_roles` VALUES (836, 13, '3e739f0c-5e5c-41a2-a926-47b17cdd5e41', 1);
+INSERT INTO `user_group_roles` VALUES (837, 13, 'c243c64c-c559-7c0d-22fd-47b1818cfe9c', 1);
+INSERT INTO `user_group_roles` VALUES (838, 13, 'f076b862-549c-8ec1-34e7-47b17cf113af', 1);
+INSERT INTO `user_group_roles` VALUES (839, 13, '4bac5505-3b54-5c1e-f788-47b17cb7ba8c', 1);
+INSERT INTO `user_group_roles` VALUES (840, 13, '45ffbab6-3397-01eb-033b-48d9d62c1e7a', 1);
+INSERT INTO `user_group_roles` VALUES (841, 13, '5b71e2e1-b6ed-4b23-7b50-48d9d6f77bb0', 1);
+INSERT INTO `user_group_roles` VALUES (842, 13, 'adf99d8b-042a-a642-54d5-47b181bf17f1', 1);
+INSERT INTO `user_group_roles` VALUES (843, 13, '31d4f5cb-0ba0-e8a6-d990-47b17c1c7ced', 1);
+INSERT INTO `user_group_roles` VALUES (844, 13, 'd62b69bf-1173-01ac-6e97-47b17c06a9d9', 1);
+INSERT INTO `user_group_roles` VALUES (845, 13, 'e2c8ceaa-9ed7-9610-fe51-47b17c02a627', 1);
+INSERT INTO `user_group_roles` VALUES (846, 13, 'e2d59922-a23c-a53a-a55a-48080c0cd283', 1);
+INSERT INTO `user_group_roles` VALUES (847, 13, '20d47983-3562-c7aa-3f79-48d9d2fe9b73', 1);
+INSERT INTO `user_group_roles` VALUES (848, 13, '15495063-5043-1260-b2df-48d9d279a2f8', 1);
+INSERT INTO `user_group_roles` VALUES (849, 13, '9c83ab9c-a212-46b4-1cbf-47b181b1190f', 1);
+INSERT INTO `user_group_roles` VALUES (850, 13, '1630f824-4ab4-c8ea-4e1b-47b179f13d6d', 1);
+INSERT INTO `user_group_roles` VALUES (851, 13, 'ab1fa3e2-6e59-7946-a5b7-47df4c7fcd9c', 1);
+INSERT INTO `user_group_roles` VALUES (852, 13, '5f4f620b-f0a5-64e2-0a8f-47b17c8eb764', 1);
+INSERT INTO `user_group_roles` VALUES (853, 13, '777069c3-bfbd-5674-d15f-47b17c2c7a69', 1);
+INSERT INTO `user_group_roles` VALUES (854, 13, '7e1c7308-b900-d291-b548-47b17c793d02', 1);
+INSERT INTO `user_group_roles` VALUES (855, 13, '710d10b8-a9c0-c669-dcdd-48080c867b8f', 1);
+INSERT INTO `user_group_roles` VALUES (856, 13, '6a6fc358-ffe3-e5c0-9bbb-48080cd639ab', 1);
+INSERT INTO `user_group_roles` VALUES (857, 13, '507e6755-6ac1-087a-9456-47b179a77ca8', 1);
+INSERT INTO `user_group_roles` VALUES (858, 13, '26535fd1-59c3-3a87-49a2-47df4c6b04de', 1);
+INSERT INTO `user_group_roles` VALUES (859, 13, '4ae7d700-7b12-418a-6266-4868e15c8312', 1);
+INSERT INTO `user_group_roles` VALUES (860, 13, 'd6558876-e08a-f7f9-cc76-4868e3d61e13', 1);
+INSERT INTO `user_group_roles` VALUES (861, 13, '5c3f0da9-a8fe-21f5-be24-4868e2806e48', 1);
+INSERT INTO `user_group_roles` VALUES (862, 13, 'd82d9df2-d351-e3dc-346c-4868e1776d0e', 1);
+INSERT INTO `user_group_roles` VALUES (863, 13, 'b9d6ca8d-479b-91c6-969c-4868e1b05b82', 1);
+INSERT INTO `user_group_roles` VALUES (864, 13, 'deeccce3-5686-25db-86ab-4868e30f812c', 1);
+INSERT INTO `user_group_roles` VALUES (865, 13, 'ed800ecf-4901-cd6c-e614-48080c7f31eb', 1);
+INSERT INTO `user_group_roles` VALUES (866, 13, '2f11703b-6f9e-2d31-2006-48d9d2f36546', 1);
+INSERT INTO `user_group_roles` VALUES (867, 13, '8ef6b7f4-9093-38e7-f869-48d9d2a9a611', 1);
+INSERT INTO `user_group_roles` VALUES (868, 13, '2b680b1e-515a-ef59-5a65-47b17cd1ad13', 1);
+INSERT INTO `user_group_roles` VALUES (869, 13, 'e14f9011-684e-51ad-703f-48080c14e2b4', 1);
+INSERT INTO `user_group_roles` VALUES (870, 13, 'a49583ce-91b0-8ae9-83af-47b18134f05d', 1);
+INSERT INTO `user_group_roles` VALUES (871, 13, '9ba157ec-828b-b220-f919-47b17c59e52c', 1);
+INSERT INTO `user_group_roles` VALUES (872, 13, '125b840a-ca1c-a14b-d9ed-48080c7fdffb', 1);
+INSERT INTO `user_group_roles` VALUES (873, 13, 'f0287657-b31d-46a5-8e7d-47b181d0a7cc', 1);
+INSERT INTO `user_group_roles` VALUES (874, 13, '639f43dd-4862-76d1-24c9-47b179d1bcb3', 1);
+INSERT INTO `user_group_roles` VALUES (875, 13, 'a348cc3f-8147-224e-2afd-47df4cfac7e1', 1);
+INSERT INTO `user_group_roles` VALUES (876, 13, '586bdedd-3cd2-18d8-7d71-4868e1b0e1af', 1);
+INSERT INTO `user_group_roles` VALUES (877, 13, '96d1f5a5-d5b0-6a99-f0d4-4868e20af312', 1);
+INSERT INTO `user_group_roles` VALUES (878, 13, '5040b4a3-3aff-c6ff-448c-4868e3e96bca', 1);
+INSERT INTO `user_group_roles` VALUES (879, 13, '8481d9f5-091f-ffa4-7545-4868e2bbece8', 1);
+INSERT INTO `user_group_roles` VALUES (880, 13, 'ae246a49-ec43-3480-528d-4868e18e400e', 1);
+INSERT INTO `user_group_roles` VALUES (881, 13, '6747ed2d-3ff8-4174-057a-48d9d21151f2', 1);
+INSERT INTO `user_group_roles` VALUES (882, 13, 'b8bfe4c6-832e-c2d4-8d5b-48d9d2c74b43', 1);
+INSERT INTO `user_group_roles` VALUES (883, 13, 'fb2b0fbd-0725-7cae-e2d8-47b18159beb8', 1);
+INSERT INTO `user_group_roles` VALUES (884, 13, '956c1b9d-dd2b-2bad-20a6-47b1819ce9d2', 1);
+INSERT INTO `user_group_roles` VALUES (885, 13, 'adc42978-333d-4985-74b0-47b17943f5d4', 1);
+INSERT INTO `user_group_roles` VALUES (886, 13, '692299f4-5c17-ee71-71ee-47df4bb74850', 1);
+INSERT INTO `user_group_roles` VALUES (887, 13, '8ec79692-b1af-3da0-5391-47b181045ff9', 1);
+INSERT INTO `user_group_roles` VALUES (888, 13, 'ec470a04-15cf-5717-4f53-47b179087a04', 1);
+INSERT INTO `user_group_roles` VALUES (889, 13, '9dfe16c6-972c-0c00-1a7f-47fc78bf200f', 1);
+INSERT INTO `user_group_roles` VALUES (890, 13, '1c730f78-b784-c5ea-d446-4868e1bb3bf8', 1);
+
+INSERT INTO `acl_roles` VALUES ('975bd4e8-057c-a07d-7385-48e5e4e7c535', '2008-10-03 09:22:47', '2008-10-03 09:22:56', '1', '1', 'Print Col OR Header', 'Print Col OR Header', 0);

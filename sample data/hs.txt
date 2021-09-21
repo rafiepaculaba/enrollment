@@ -1,0 +1,577 @@
+-- phpMyAdmin SQL Dump
+-- version 2.8.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Mar 11, 2008 at 12:12 PM
+-- Server version: 5.0.22
+-- PHP Version: 5.1.4
+-- 
+-- Database: `highschool`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `account_notes`
+-- 
+
+DROP TABLE IF EXISTS `account_notes`;
+CREATE TABLE `account_notes` (
+  `accNoteID` bigint(20) NOT NULL auto_increment,
+  `accID` bigint(20) NOT NULL,
+  `noteType` varchar(20) NOT NULL,
+  `notes` text NOT NULL,
+  `notedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`accNoteID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `account_notes`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `accounts`
+-- 
+
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE `accounts` (
+  `accID` bigint(20) NOT NULL auto_increment,
+  `idno` varchar(15) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `tuitionFee` float(15,2) NOT NULL,
+  `labFee` float(15,2) NOT NULL,
+  `regFee` float(15,2) NOT NULL,
+  `miscFee` float(15,2) NOT NULL,
+  `addAdj` float(15,2) NOT NULL,
+  `lessAdj` float(15,2) NOT NULL,
+  `oldBalance` float(15,2) NOT NULL,
+  `totalFee` float(15,2) NOT NULL,
+  `payment` float(15,2) NOT NULL,
+  `balance` float(15,2) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`accID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `accounts`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `assessments`
+-- 
+
+DROP TABLE IF EXISTS `assessments`;
+CREATE TABLE `assessments` (
+  `assID` bigint(20) NOT NULL auto_increment,
+  `idno` varchar(15) NOT NULL,
+  `accID` bigint(20) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `term` tinyint(4) NOT NULL,
+  `tuitionFee` float(15,2) NOT NULL,
+  `labFee` float(15,2) NOT NULL,
+  `regFee` float(15,2) NOT NULL,
+  `miscFee` float(15,2) NOT NULL,
+  `addAdj` float(15,2) NOT NULL,
+  `lessAdj` float(15,2) NOT NULL,
+  `oldBalance` float(15,2) NOT NULL,
+  `totalFees` float(15,2) NOT NULL,
+  `ttlPayment` float(15,2) NOT NULL,
+  `balance` float(15,2) NOT NULL,
+  `ttlDue` float(15,2) NOT NULL,
+  `amtPaid` float(15,2) NOT NULL,
+  `preparedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`assID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `assessments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `block_sections`
+-- 
+
+DROP TABLE IF EXISTS `block_sections`;
+CREATE TABLE `block_sections` (
+  `secID` bigint(20) NOT NULL auto_increment,
+  `secName` varchar(20) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `yrLevel` char(1) NOT NULL,
+  `remarks` varchar(150) default NULL,
+  `preparedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`secID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `block_sections`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `block_sections_details`
+-- 
+
+DROP TABLE IF EXISTS `block_sections_details`;
+CREATE TABLE `block_sections_details` (
+  `secDetailID` bigint(20) NOT NULL auto_increment,
+  `secID` bigint(20) NOT NULL,
+  `schedID` bigint(20) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`secDetailID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `block_sections_details`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `configurations`
+-- 
+
+DROP TABLE IF EXISTS `configurations`;
+CREATE TABLE `configurations` (
+  `configID` bigint(20) NOT NULL auto_increment,
+  `title` varchar(20) NOT NULL,
+  `definition` text NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`configID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `configurations`
+-- 
+
+INSERT INTO `configurations` VALUES (2, 'School Name', 'University of San Carlos edited', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `enrollment_details`
+-- 
+
+DROP TABLE IF EXISTS `enrollment_details`;
+CREATE TABLE `enrollment_details` (
+  `endID` bigint(20) NOT NULL auto_increment,
+  `enID` bigint(20) NOT NULL,
+  `schedID` bigint(20) NOT NULL,
+  `subjID` bigint(20) NOT NULL,
+  `fgrade` float(5,1) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`endID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `enrollment_details`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `enrollment_table_logs`
+-- 
+
+DROP TABLE IF EXISTS `enrollment_table_logs`;
+CREATE TABLE `enrollment_table_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `docType` varchar(10) NOT NULL,
+  `enID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `subjects` varchar(200) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `enrollment_table_logs`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `enrollments`
+-- 
+
+DROP TABLE IF EXISTS `enrollments`;
+CREATE TABLE `enrollments` (
+  `enID` bigint(20) NOT NULL auto_increment,
+  `schYear` varchar(10) NOT NULL,
+  `idno` varchar(32) NOT NULL,
+  `yrLevel` char(1) NOT NULL,
+  `secID` bigint(20) default NULL,
+  `dateCreated` datetime NOT NULL,
+  `ttlUnits` float(5,1) NOT NULL,
+  `encodedBy` varchar(36) NOT NULL,
+  `lastEdited` datetime NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`enID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `enrollments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `form137`
+-- 
+
+DROP TABLE IF EXISTS `form137`;
+CREATE TABLE `form137` (
+  `gradeID` bigint(20) NOT NULL auto_increment,
+  `idno` varchar(15) NOT NULL,
+  `endID` bigint(20) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `subjID` bigint(20) NOT NULL,
+  `fgrade` float(5,1) NOT NULL,
+  `units` float(5,1) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`gradeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `form137`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `form137_grade_logs`
+-- 
+
+DROP TABLE IF EXISTS `form137_grade_logs`;
+CREATE TABLE `form137_grade_logs` (
+  `logID` bigint(20) NOT NULL,
+  `idno` varchar(15) NOT NULL,
+  `endID` bigint(20) NOT NULL,
+  `changes` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 
+-- Dumping data for table `form137_grade_logs`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `grade_sheets`
+-- 
+
+DROP TABLE IF EXISTS `grade_sheets`;
+CREATE TABLE `grade_sheets` (
+  `gsID` bigint(20) NOT NULL auto_increment,
+  `schYear` varchar(10) NOT NULL,
+  `profID` varchar(36) NOT NULL,
+  `schedID` bigint(20) NOT NULL,
+  `units` float(5,1) NOT NULL,
+  `remarks` varchar(150) default NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`gsID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `grade_sheets`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `master_table_audit_logs`
+-- 
+
+DROP TABLE IF EXISTS `master_table_audit_logs`;
+CREATE TABLE `master_table_audit_logs` (
+  `logID` bigint(20) NOT NULL auto_increment,
+  `docType` varchar(10) NOT NULL,
+  `recID` bigint(20) NOT NULL,
+  `logDate` datetime NOT NULL,
+  `operation` varchar(10) NOT NULL,
+  `fields` varchar(200) NOT NULL,
+  PRIMARY KEY  (`logID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `master_table_audit_logs`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `payment_types`
+-- 
+
+DROP TABLE IF EXISTS `payment_types`;
+CREATE TABLE `payment_types` (
+  `paymentTypeID` bigint(20) NOT NULL auto_increment,
+  `paymentName` varchar(100) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`paymentTypeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `payment_types`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `payments`
+-- 
+
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE `payments` (
+  `paymentID` bigint(20) NOT NULL auto_increment,
+  `accID` bigint(20) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `idno` varchar(15) NOT NULL,
+  `date` datetime NOT NULL,
+  `paymentTypeID` bigint(20) NOT NULL,
+  `term` tinyint(4) NOT NULL,
+  `amount` float(15,2) NOT NULL,
+  `encodedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`paymentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `payments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `refunds`
+-- 
+
+DROP TABLE IF EXISTS `refunds`;
+CREATE TABLE `refunds` (
+  `refundID` bigint(20) NOT NULL auto_increment,
+  `idno` varchar(15) NOT NULL,
+  `accID` bigint(20) NOT NULL,
+  `schYear` varchar(10) NOT NULL,
+  `date` datetime NOT NULL,
+  `amount` float(15,2) NOT NULL,
+  `preparedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`refundID`),
+  KEY `idno` (`idno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `refunds`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `registration_payments`
+-- 
+
+DROP TABLE IF EXISTS `registration_payments`;
+CREATE TABLE `registration_payments` (
+  `regPaymentID` bigint(20) NOT NULL auto_increment,
+  `schYear` varchar(10) NOT NULL,
+  `idno` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `amount` float(15,2) NOT NULL,
+  `encodedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`regPaymentID`),
+  KEY `idno` (`idno`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `registration_payments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `registrations`
+-- 
+
+DROP TABLE IF EXISTS `registrations`;
+CREATE TABLE `registrations` (
+  `regID` bigint(20) NOT NULL auto_increment,
+  `fname` varchar(25) NOT NULL,
+  `lname` varchar(25) NOT NULL,
+  `mname` varchar(25) NOT NULL,
+  `gender` char(1) NOT NULL,
+  `age` int(11) NOT NULL,
+  `bday` date NOT NULL,
+  `cstatus` char(1) NOT NULL,
+  `nationality` varchar(20) NOT NULL,
+  `entryDocs` varchar(50) NOT NULL,
+  `lastSchool` varchar(70) default NULL,
+  `sch_last_attended` date NOT NULL,
+  `regDate` date NOT NULL,
+  `encodedBy` varchar(32) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`regID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `registrations`
+-- 
+
+INSERT INTO `registrations` VALUES (1, 'fasdf', 'fasdfsf', 'fasdfsaf', 'M', 34, '1983-01-01', 'S', 'Filipino', '', '', '2008-01-15', '2008-01-30', '1', 1);
+INSERT INTO `registrations` VALUES (2, 'scad', 'dacs', 'scad', 'M', 40, '1970-01-01', 'S', 'Filipino', 'fasdfsadf', 'fasdfsaf', '2008-01-22', '2008-01-30', '1', 0);
+INSERT INTO `registrations` VALUES (3, 'Jec', 'Cavaliers', 'Luminax', 'M', 20, '1987-06-25', 'S', 'Filipino', 'form 137', '', '0000-00-00', '2008-02-11', '1', 0);
+INSERT INTO `registrations` VALUES (4, 'efe', 'awdfawf', 'fawefse', 'M', 12, '1990-01-01', 'S', 'Filipino', '', '', '0000-00-00', '2008-02-11', '1', 1);
+INSERT INTO `registrations` VALUES (5, 'Jec', 'Cavaliers', 'Luminax', 'M', 12, '1990-01-01', 'S', 'Filipino', 'form 137', '', '0000-00-00', '2008-02-11', '1', 0);
+INSERT INTO `registrations` VALUES (6, 'Jec', 'cavaliers', 'awt', 'M', 20, '1990-01-01', 'S', 'Filipino', 'form 137', '', '2008-02-13', '2008-02-11', '1', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `schedules`
+-- 
+
+DROP TABLE IF EXISTS `schedules`;
+CREATE TABLE `schedules` (
+  `schedID` bigint(20) NOT NULL auto_increment,
+  `schYear` varchar(10) NOT NULL,
+  `schedCode` varchar(10) NOT NULL,
+  `subjID` bigint(20) NOT NULL,
+  `profID` varchar(36) NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL,
+  `onMon` tinyint(4) NOT NULL default '0',
+  `onTue` tinyint(4) NOT NULL default '0',
+  `onWed` tinyint(4) NOT NULL default '0',
+  `onThu` tinyint(4) NOT NULL default '0',
+  `onFri` tinyint(4) NOT NULL default '0',
+  `onSat` tinyint(4) NOT NULL default '0',
+  `onSun` tinyint(4) NOT NULL default '0',
+  `room` varchar(15) NOT NULL,
+  `maxCapacity` int(11) NOT NULL,
+  `noEnrolled` int(11) NOT NULL,
+  `remarks` varchar(150) default NULL,
+  `preparedBy` varchar(36) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`schedID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `schedules`
+-- 
+
+INSERT INTO `schedules` VALUES (1, '2006-2007', '7533', 1, '', '07:30:00', '08:30:00', 1, 1, 1, 1, 1, 0, 0, '465', 45, 0, 'sample lang', '', 1);
+INSERT INTO `schedules` VALUES (2, '2006-2007', '91545', 1, '', '07:30:00', '08:30:00', 1, 1, 1, 1, 1, 0, 0, '685', 50, 0, 'fjlasdlfkjdslk', '', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `school_fees`
+-- 
+
+DROP TABLE IF EXISTS `school_fees`;
+CREATE TABLE `school_fees` (
+  `feeID` bigint(20) NOT NULL auto_increment,
+  `schYear` varchar(10) NOT NULL,
+  `item` varchar(100) NOT NULL,
+  `amount` float(15,2) NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`feeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `school_fees`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `students`
+-- 
+
+DROP TABLE IF EXISTS `students`;
+CREATE TABLE `students` (
+  `recID` bigint(20) NOT NULL auto_increment,
+  `idno` varchar(15) NOT NULL,
+  `regID` bigint(20) NOT NULL,
+  `fname` varchar(25) NOT NULL,
+  `lname` varchar(25) NOT NULL,
+  `mname` varchar(25) NOT NULL,
+  `yrLevel` char(1) NOT NULL,
+  `gender` char(1) NOT NULL,
+  `age` int(11) NOT NULL,
+  `bday` date NOT NULL,
+  `permanentAddr` varchar(150) NOT NULL,
+  `currentAddr` varchar(150) default NULL,
+  `phone` varchar(25) default NULL,
+  `cstatus` char(1) NOT NULL,
+  `nationality` varchar(20) NOT NULL,
+  `motherName` varchar(70) default NULL,
+  `fatherName` varchar(70) default NULL,
+  `guardian` varchar(70) default NULL,
+  `entryDocs` varchar(50) NOT NULL,
+  `entryDate` date NOT NULL,
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`recID`),
+  KEY `idno` (`idno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- 
+-- Dumping data for table `students`
+-- 
+
+INSERT INTO `students` VALUES (1, 'fasdfasf', 1, 'fasfsa', 'asfdfaasd', 'sadfasfsafd', '6', 'M', 32, '1990-08-01', 'fasdfdsf', 'sadfsafsaf', 'fasdafasf', 'S', 'Filipino', 'fafsdfadsf', 'fasdfsad', '', 'hs', '2008-01-30', 1);
+INSERT INTO `students` VALUES (2, '01877281', 2, 'scad', 'dacs', 'scad', 'S', 'M', 40, '1970-01-01', 'fasdfsaf', '', '', 'S', 'Filipino', '', '', '', '', '2008-02-06', 1);
+INSERT INTO `students` VALUES (3, '940001', 3, 'Jec', 'Cavaliers', 'Luminax', '4', 'M', 20, '1987-06-25', 'apas cc', '', '', 'S', 'Filipino', 'inang mader', 'amang fader', '', 'form 137', '2008-02-11', 1);
+INSERT INTO `students` VALUES (4, '940002', 5, 'Jec', 'Cavaliers', 'Luminax', '4', 'M', 12, '1990-01-01', 'apas cc', '', '', 'S', 'Filipino', '', '', '', '', '2008-02-11', 1);
+INSERT INTO `students` VALUES (5, '12365456', 0, 'shie', 'shie', 'shie', '3', 'F', 34, '1986-01-01', 'fasdfsadfsdaf', '', '', 'S', 'filipino', '', '', '', '', '2008-02-28', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `subjects`
+-- 
+
+DROP TABLE IF EXISTS `subjects`;
+CREATE TABLE `subjects` (
+  `subjID` bigint(20) NOT NULL auto_increment,
+  `yrLevel` char(1) NOT NULL,
+  `subjCode` varchar(10) NOT NULL,
+  `descTitle` varchar(100) NOT NULL,
+  `units` float(5,1) NOT NULL,
+  `type` tinyint(4) NOT NULL default '1',
+  `rstatus` tinyint(4) NOT NULL default '1',
+  PRIMARY KEY  (`subjID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `subjects`
+-- 
+
+INSERT INTO `subjects` VALUES (1, '1', 'Math 1', 'Basic Math', 1.0, 1, 1);
+INSERT INTO `subjects` VALUES (2, '1', 'Engl 1', 'Basic English', 1.0, 1, 1);

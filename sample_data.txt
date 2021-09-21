@@ -1,0 +1,98 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.6
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 28, 2008 at 06:06 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `quick`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chart_class`
+--
+
+DROP TABLE IF EXISTS `chart_class`;
+CREATE TABLE `chart_class` (
+  `cid` int(11) NOT NULL default '0',
+  `class_name` varchar(60) NOT NULL default '',
+  PRIMARY KEY  (`cid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chart_class`
+--
+
+INSERT INTO `chart_class` (`cid`, `class_name`) VALUES
+(1, 'Income');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chart_master`
+--
+
+DROP TABLE IF EXISTS `chart_master`;
+CREATE TABLE `chart_master` (
+  `account_code` varchar(11) NOT NULL default '',
+  `account_name` varchar(60) NOT NULL default '',
+  `account_type` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`account_code`),
+  KEY `account_code` (`account_code`),
+  KEY `account_name` (`account_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chart_master`
+--
+
+INSERT INTO `chart_master` (`account_code`, `account_name`, `account_type`) VALUES
+('110', 'Tuition', 1),
+('111', 'Registration', 1),
+('112', 'Miscellaneous', 1),
+('113', 'Laboratory', 1),
+('114', 'Old Account', 1),
+('116', 'Tuition (PGMA)', 1),
+('117', 'Computer Subject', 1),
+('118', 'School ID', 1),
+('119', 'HS Tuition', 1),
+('120', 'TOR/SO/Diploma/Cert/Scan', 1),
+('121', 'Miscellaneous', 1),
+('122', 'Books', 1),
+('123', 'Canteen Income', 1),
+('124', 'Rentals', 1),
+('125', 'PGMA', 1),
+('126', 'Int.', 1),
+('127', 'Pen.', 1),
+('211', 'HS Registration', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chart_types`
+--
+
+DROP TABLE IF EXISTS `chart_types`;
+CREATE TABLE `chart_types` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(60) NOT NULL default '',
+  `class_id` tinyint(1) NOT NULL default '0',
+  `parent` int(11) NOT NULL default '-1',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2147483648 ;
+
+--
+-- Dumping data for table `chart_types`
+--
+
+INSERT INTO `chart_types` (`id`, `name`, `class_id`, `parent`) VALUES
+(1, 'Income', 1, -1),
+(2, 'Misc', 1, 1);

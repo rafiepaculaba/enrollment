@@ -1,0 +1,1 @@
+SUGAR.language.setLanguage('Home', {"LBL_MODULE_NAME":"Home","LBL_MODULE_COL_DASHBOARD":"College Dashboard","LBL_MODULE_HS_DASHBOARD":"High School Dashboard","LBL_MODULE_ELEM_DASHBOARD":"Elementary Dashboard","LBL_MODULE_PRESCHOOL_DASHBOARD":"Preschool Dashboard"});

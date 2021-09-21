@@ -1,0 +1,333 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Public License Version
+ * 1.1.3 ("License"); You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.sugarcrm.com/SPL
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.  See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *    (i) the "Powered by SugarCRM" logo and
+ *    (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * The Original Code is: SugarCRM Open Source
+ * The Initial Developer of the Original Code is SugarCRM, Inc.
+ * Portions created by SugarCRM are Copyright (C) 2004-2006 SugarCRM, Inc.;
+ * All Rights Reserved.
+ * Contributor(s): ______________________________________.
+ ********************************************************************************/
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+<!-- BEGIN: main -->
+<style>
+	#subjectfield { height: 1.6em; }
+</style>
+{JAVASCRIPT}
+<script type="text/javascript" language="Javascript" src="modules/Emails/Email.js"></script>
+<script type="text/javascript" language="Javascript" src="include/javascript/yui/YAHOO.js"></script>
+<script type="text/javascript" language="Javascript" src="include/javascript/yui/event.js"></script>
+<script type="text/javascript" language="Javascript" src="include/javascript/yui/connection.js"></script>
+<script type="text/javascript" language="Javascript" src="include/JSON.js"></script>
+<script type="text/javascript">
+	{FIELD_DEFS_JS}
+</script> 
+
+<form name="EditView" id="EditView" method="POST" action="index.php" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="EmailTemplates">
+	<input type="hidden" name="record" value="{ID}">
+	<input type="hidden" name="action">
+	<input type="hidden" name="form">
+	<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+	<input type="hidden" name="return_id" value="{RETURN_ID}">
+	<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+	<input type="hidden" name="inpopupwindow" value="{INPOPUPWINDOW}">
+	<input type="hidden" name="old_id" value="{OLD_ID}">
+
+	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td style="padding-bottom: 2px;">
+				<input title="{APP.LBL_SAVE_BUTTON_TITLE}" accesskey="{APP.LBL_SAVE_BUTTON_KEY}" class="button"
+					onclick="	this.form.action.value='Save';
+								addUploadFiles('EditView');
+								addUploadDocs('EditView');
+								return check_form('EditView');" 
+					type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  ">
+				<input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accesskey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="{CANCEL_SCRIPT}" type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+			</td>
+			<td align="right" nowrap>
+				<span class="required">
+					{APP.LBL_REQUIRED_SYMBOL} 
+				</span>
+				{APP.NTC_REQUIRED} 
+			</td>
+			<td align='right'>
+				{ADMIN_EDIT} 
+			</td>
+		</tr>
+	</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabForm">
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="15%" class="dataLabel">
+							{MOD.LBL_NAME} 
+							<span class="required">
+								{APP.LBL_REQUIRED_SYMBOL}
+							</span>
+						</td>
+						<td width="30%" class="dataField">
+							<input name='name' tabindex="10" type="text" size='30' maxlength="255" value="{NAME}">
+						</td>
+						<td width="15%" class="dataLabel" align='right'>
+
+
+
+						</td>
+						<td width="30%" class="dataField">
+
+
+
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" class="dataLabel">
+							{MOD.LBL_DESCRIPTION} 
+						</td>
+						<td colspan="3" class="dataField">
+							<textarea name='description' tabindex='30' cols="90" rows="1" style="height: 1.6.em; overflow-y:auto; font-family:sans-serif,monospace; font-size:inherit;" id="subjectfield">{DESCRIPTION}</textarea> 
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							&nbsp; 
+						</td>
+					</tr>
+					<tr>
+						<td width="15%" class="dataLabel" align='left'>
+							{MOD.LBL_INSERT_VARIABLE}&nbsp; 
+						</td>
+						<td width="30%" class="dataField" colspan="3">
+							<select name='variable_module' tabindex="40" onchange="addVariables(document.EditView.variable_name,this.options[this.selectedIndex].value);">
+  							  {DROPDOWN}
+ 							</select>
+							<select name='variable_name' tabindex="50" onchange="showVariable();">
+							</select>
+							<span class="dataLabel">
+								{MOD.LBL_USE}: 
+							</span>
+							<input type="text" size="30" tabindex="60" name="variable_text" />
+<!-- BEGIN: variable_button -->
+							<input type='button' tabindex="70" onclick='{INSERT_VARIABLE_ONCLICK}' class='button' value='{MOD.LBL_INSERT}'>
+<!-- END: variable_button -->
+						</td>
+					</tr>
+<!-- BEGIN: tracker_url -->
+					<tr>
+						<td width="15%" class="dataLabel" align='left'>
+							{MOD.LBL_INSERT_TRACKER_URL}&nbsp; 
+						</td>
+						<td width="85%" colspan="3" valign="top" class="dataField">
+							<select tabindex='75' name='tracker_url' onchange='this.form.url_text.value=this.value'>
+								{TRACKER_KEY_OPTIONS}
+							</select>
+							<input type="text" size="30" id="url_text" name="url_text" value="{DEFAULT_URL_TEXT}" />
+							<input type='button' tabindex="77" onclick='{INSERT_URL_ONCLICK}' class='button' value='{MOD.LBL_INSERT_URL_REF}'>
+						</td>
+					</tr>
+<!-- END: tracker_url -->
+					<tr>
+						<td width="15%" class="dataLabel">
+							{MOD.LBL_SUBJECT} 
+						</td>
+						<td colspan='4' class="dataField">
+							<textarea onblur="remember_place(this);" name='subject' tabindex='80' cols="90" rows="1" style="height: 1.6.em; overflow-y:auto; font-family:sans-serif,monospace; font-size:inherit;" id="subjectfield">{SUBJECT}</textarea> 
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan='4'>
+						<input  name="toggle_textonly"  id="toggle_textonly" onclick="toggle_text_only();" type="checkbox" {TEXTONLY_CHECKED}/>
+						<input  name="text_only"  id="text_only"  type="hidden" value='{TEXTONLY_VALUE}'/>						
+							&nbsp;{MOD.LBL_SEND_AS_TEXT}	
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" class="dataLabel">
+							{MOD.LBL_BODY} 
+						</td>
+<!-- BEGIN: textarea -->
+						<td colspan="4" class="dataField">
+							<div id="html_div">
+								<textarea tabindex='90' name='body_html' cols="100" rows="20">{BODY_HTML}</textarea> 
+							</div>
+							<input onclick="toggle_textarea(this);" type="checkbox" name="toggle_html">
+							{MOD.LBL_EDIT_ALT_TEXT} 
+							<br>
+							<div id="text_div" style="display: none">
+								<textarea tabindex='100' name='body' cols="100" rows="20">{BODY}</textarea> 
+							</div>
+						</td>
+<!-- END: textarea -->
+<!-- BEGIN: htmlarea -->
+						<td colspan="4" class="dataField">
+							<div id="html_div">
+								{HTMLAREA} 
+							</div>
+							<div id='toggle_textarea_option'>
+								<input id='toggle_textarea_elem' onclick="toggle_textarea(this);" type="checkbox" name="toggle_html" />
+								{MOD.LBL_EDIT_ALT_TEXT} 
+							</div>
+							<br>
+							<div id="text_div" style="display: none">
+								<textarea tabindex='110' name='body' cols="100" rows="20" >{BODY}</textarea> 
+							</div>
+						</td>
+<!-- END: htmlarea -->
+					</tr>
+					<tr>
+						<td valign="top" class="dataLabel">
+							{MOD.LBL_ATTACHMENTS}: 
+						</td>
+						<td colspan="2" nowrap>
+							{ATTACHMENTS_JAVASCRIPT} {ATTACHMENTS} 
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+<form id="upload_form" name="upload_form" method="POST" action='AttachDocuments.php' enctype="multipart/form-data">
+	<div id="upload_div">
+		<input type="file" id="my_file" name="file_1" size="40" />
+		<input type="text" id="documentName" name="uploaddoc" onchange="docUpload(); form_reset_doc();" size="20" />
+		<input type="hidden" id="documentId" name="seldoc" tabindex="0" />
+		<input type="hidden" id="docRevId" name="seldoc" tabindex="0" />
+		<input type="button" name="add_doc" onclick="selectDoc();" value="Select Doc" class="button" />
+	</div>
+	<div id="attachments_div">
+	</div>
+<script type="text/javascript">   
+	var multi_selector = new multiFiles(document.getElementById('upload_div'));
+	multi_selector.addElement( document.getElementById('my_file'));
+</script>
+</form>
+
+<script type="text/javascript">
+	var focus_obj = false;
+	
+	function remember_place(obj) {
+	  focus_obj = obj;
+	}
+	
+	function showVariable() {
+		document.EditView.variable_text.value = 
+			document.EditView.variable_name.options[document.EditView.variable_name.selectedIndex].value; 
+	}
+	
+	function addVariables(the_select,the_module) {
+		the_select.options.length = 0;
+		for(var i=0;i<field_defs[the_module].length;i++) {
+			var new_option = document.createElement("option");
+			new_option.value = "$"+field_defs[the_module][i].name;
+			new_option.text= field_defs[the_module][i].value
+			the_select.options.add(new_option,i);
+		}
+		showVariable();
+	}
+	
+	function toggle_textarea(obj) {
+		if(obj.checked == true) {
+			document.getElementById('text_div').style.display = 'inline';
+		} else {
+			document.getElementById('text_div').style.display = 'none';
+		}
+	}
+	
+	/*
+	 * this function will toggle the fckeditor and text area displays
+	*/
+	function toggle_text_only() {
+		//check to see if the toggle textonly flag is checked
+		if(document.getElementById('toggle_textonly').checked == true) {
+			//hide the html div (containing fckeditor)
+			document.getElementById('html_div').style.display = 'none';
+			//set text_only value to 1
+			document.getElementById('text_only').value = 1;			
+	
+			//now get the edit textarea checkbox, mark it as checked 
+			obj = document.getElementById('toggle_textarea_elem');
+			obj.checked = true;
+			//call toggle_textarea function. this will ensure the text area is displayed
+			toggle_textarea(obj);
+			document.getElementById('toggle_textarea_option').style.display = 'none';
+		} else {
+			//display the html div (containing fckeditor)
+			document.getElementById('html_div').style.display = 'inline';
+			document.getElementById('toggle_textarea_option').style.display = 'inline';
+			//set text_only value to 0
+			document.getElementById('text_only').value = 0;						
+		}
+	}
+	//call the function on load, this will hide the fckeditor if needed
+	toggle_text_only();
+
+	/*
+	 * this function will insert variables into text area 
+	*/
+	function insert_variable_text(myField, myValue) {
+		//IE support
+		if (document.selection) {
+			myField.focus();
+			sel = document.selection.createRange();
+			sel.text = myValue;
+		}
+		//MOZILLA/NETSCAPE support
+		else if (myField.selectionStart || myField.selectionStart == '0') {
+			var startPos = myField.selectionStart;
+			var endPos = myField.selectionEnd;
+			myField.value = myField.value.substring(0, startPos)
+			+ myValue
+			+ myField.value.substring(endPos, myField.value.length);
+		} else {
+			myField.value += myValue;
+		}
+	}
+
+	/*
+	 * this function will check to see if text only flag has been checked.
+	 * If so, the it will call the text insert function, if not, then it
+	 * will call the html (fck eidtor) insert function
+	*/
+	function insert_variable(text) {
+		//if text only flag is checked, then insert into text field
+		if(document.getElementById('toggle_textonly').checked == true){
+			//use text version insert 
+			insert_variable_text(document.EditView.body, text) ;
+		}else{
+			//use html version insert 
+			insert_variable_html(text) ;
+		}
+	}			
+
+
+
+
+	function toggle_portal_flag() {
+		{TOGGLE_JS}
+	}
+	
+	addVariables(document.EditView.variable_name,'{DEFAULT_MODULE}');
+	toggle_textarea( document.getElementById('toggle_textarea_elem'));
+	focus_obj = document.EditView.body;
+	toggle_portal_flag();
+</script>
+
+<!-- END: main -->

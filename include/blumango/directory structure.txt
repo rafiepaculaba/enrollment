@@ -1,0 +1,32 @@
+\include\blumango\classes\
+			- database\Database.php
+			- database\QBuilder.php
+
+			- validator\Validate
+
+			- utils\utils.php
+			- utils\JSON.php / \include\JSON.php
+			- utils\debug_utils.php
+\include\blumango\javascript\
+			- ajax.js
+			- utils.js
+			- validate.js
+		
+\modules
+	\Invoice
+		\classes\
+		\templates\
+		\scripts here (functional and handlers)
+
+\index.php
+
+
+example sa handler includes
+- required ('modules/management/classes/Student.php');
+
+example sa classes includes
+- required ('includes/database/Database.php');
+
+		
+		
+	
